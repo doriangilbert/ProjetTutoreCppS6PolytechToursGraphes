@@ -18,5 +18,19 @@
     <ClCompile Include="PT_CPP_Graphes.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\ProjetTutoreCppS6PolytechToursMatrices\PT_CPP_Matrices\PT_CPP_Matrices\CException.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CListe.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\ProjetTutoreCppS6PolytechToursMatrices\PT_CPP_Matrices\PT_CPP_Matrices\CException.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CListe.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
