@@ -10,19 +10,19 @@ class CGraphe
 {
 	private:
 		CListe<CSommet> LISGRASommet;
-
-		bool bGRAEstOrienté;
+		bool bGRAEstOriente;
 
 	public:
+
 		CGraphe();
 
 		CGraphe(CGraphe &GRAParam);
 
-		CGraphe(bool bEstOrienté);
+		CGraphe(bool bEstOriente);
 
 		~CGraphe();
 
-		bool GRALireEstOrienté();
+		bool GRALireEstOriente();
 
 		void GRAAjouterSommet(unsigned int uiId);
 
@@ -30,7 +30,7 @@ class CGraphe
 
 		void GRAAfficher();
 
-		CSommet& operator=(CSommet &SOMParam);
+		CGraphe& operator=(CGraphe &GRAParam);
 
 };
 

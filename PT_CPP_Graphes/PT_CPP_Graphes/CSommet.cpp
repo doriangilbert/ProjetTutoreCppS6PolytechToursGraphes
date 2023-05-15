@@ -42,5 +42,6 @@ void CSommet::SOMSupprimerArc(unsigned int uiDestination)
 
 CSommet& CSommet::operator=(CSommet &SOMParam)
 {
-	
+	CSommet TODO;
+	return TODO;
 }

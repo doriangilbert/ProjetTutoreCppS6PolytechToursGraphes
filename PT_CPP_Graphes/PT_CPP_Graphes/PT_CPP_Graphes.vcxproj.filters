@@ -27,13 +27,13 @@
     <ClCompile Include="CGraphe.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="CLecteur.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="CSommet.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="CException.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CLecteur.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

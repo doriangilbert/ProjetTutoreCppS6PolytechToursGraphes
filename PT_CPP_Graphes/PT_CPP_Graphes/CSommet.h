@@ -10,12 +10,11 @@ class CSommet
 {
 	private:
 		unsigned int uiSOMId;
-
 		CListe<CArc*> LISSOMPartants;
-
 		CListe<CArc*> LISSOMArrivants;
 
 	public:
+
 		CSommet();
 
 		CSommet(CSommet &SOMParam);

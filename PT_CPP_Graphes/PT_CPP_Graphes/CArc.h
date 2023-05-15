@@ -9,6 +9,7 @@ class CArc
 		unsigned int uiARCDestination;
 
 	public:
+
 		CArc();
 
 		CArc(unsigned int uiDestination);

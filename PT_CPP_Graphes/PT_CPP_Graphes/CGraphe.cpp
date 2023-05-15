@@ -10,7 +10,7 @@ CGraphe::CGraphe(CGraphe &GRAParam)
 
 }
 
-CGraphe::CGraphe(bool bEstOrienté)
+CGraphe::CGraphe(bool bEstOriente)
 {
 	
 }
@@ -20,9 +20,9 @@ CGraphe::~CGraphe()
 
 }
 
-bool CGraphe::GRALireEstOrienté()
+bool CGraphe::GRALireEstOriente()
 {
-	return bGRAEstOrienté;
+	return bGRAEstOriente;
 }
 
 void CGraphe::GRAAjouterSommet(unsigned int uiId)
@@ -40,7 +40,8 @@ void CGraphe::GRAAfficher()
 
 }
 
-CSommet& CGraphe::operator=(CSommet &SOMParam)
+CGraphe& CGraphe::operator=(CGraphe &GRAParam)
 {
-
+	CGraphe TODO;
+	return TODO;
 }
