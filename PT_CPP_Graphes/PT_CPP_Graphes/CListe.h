@@ -1,5 +1,12 @@
 #ifndef CListe_h
 #define CListe_h
+#include "CException.h"
+
+using namespace std;
+#include <iostream>
+
+#define ListeVide 1
+#define DepassementdeTaille 2
 
 template<class MTYPE> class CListe
 {
@@ -15,7 +22,8 @@ template<class MTYPE> class CListe
 		void LISAjouterElement(MTYPE MTYPEParam);
 		void LISModifierElement(unsigned int uiPosition, MTYPE MTYPEParam);
 		void LISSupprimerElement(unsigned int uiPosition);
-		CListe<MTYPE>& operator=(CListe<MTYPE> MTYPEParam);
+		void LISAfficher();
+		CListe<MTYPE>& operator=(CListe<MTYPE> LISParam);
 };
 
 #include "CListe.cpp"
