@@ -3,6 +3,12 @@
 
 #include "CGraphe.h"
 
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+#define NULL 0;
+
 class CLecteur
 {
 	private:

@@ -12,7 +12,7 @@
 *********************************************************/
 CLecteur::CLecteur()
 {
-
+	pcLECNomFichier = NULL;
 }
 
 /*********************************************************
@@ -27,7 +27,7 @@ CLecteur::CLecteur()
 *********************************************************/
 CLecteur::CLecteur(CLecteur &LECParam)
 {
-
+	strcpy(pcLECNomFichier, LECParam.LECLireNomFichier());
 }
 
 /*********************************************************
@@ -43,7 +43,8 @@ CLecteur::CLecteur(CLecteur &LECParam)
 *********************************************************/
 CLecteur::CLecteur(char* pcNomFichier)
 {
-
+	pcLECNomFichier = new char[strlen(pcNomFichier)];
+	strcpy(pcLECNomFichier, pcNomFichier);
 }
 
 /**********************************************
@@ -57,7 +58,7 @@ CLecteur::CLecteur(char* pcNomFichier)
 **********************************************/
 CLecteur::~CLecteur()
 {
-
+	pcLECNomFichier = NULL;
 }
 
 /*****************************************************************************
@@ -71,7 +72,7 @@ CLecteur::~CLecteur()
 *****************************************************************************/
 char* CLecteur::LECLireNomFichier()
 {
-
+	return pcLECNomFichier;
 }
 
 /**********************************************************************************
@@ -85,7 +86,8 @@ char* CLecteur::LECLireNomFichier()
 **********************************************************************************/
 void CLecteur::LECModifierNomFichier(char* pcNomFichier)
 {
-
+	pcLECNomFichier = new char[strlen(pcNomFichier)];
+	strcpy(pcLECNomFichier, pcNomFichier);
 }
 
 /******************************************************************************************
@@ -99,7 +101,8 @@ void CLecteur::LECModifierNomFichier(char* pcNomFichier)
 ******************************************************************************************/
 CLecteur& CLecteur::operator=(CLecteur& LECParam)
 {
-
+	strcpy(pcLECNomFichier, LECParam.LECLireNomFichier());
+	return *this;
 }
 
 /**********************************************************************************************
