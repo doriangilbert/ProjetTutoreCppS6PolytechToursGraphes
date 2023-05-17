@@ -10,6 +10,15 @@ using namespace std;
 #pragma warning(disable : 4996) //Ligne utilisée pour éviter l'erreur Visual Studio : C4996 This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS
 
 #define NULL 0;
+/*
+Voir pour faire pour les codes erreurs une typologie de type : <id_classe><id_erreur>, ce qui permet d'avoir 10 codes erreurs par classe et si on dépasse il suffit de prendre le prochain <id_classe> disponible, 
+cette structure permet une homogénéité des codes et d'améliorer leur lecture, ainsi si on donne le code 5 à CLecteur on aura les codes de 50 à 59, 
+si par exemple il faut plus de codes et que les codes 6 et 7 sont deja pris on va donc prendre 8 et on aura les codes 80 à 89 et ainsi de suite.
+En gardant l'exemple précédent, le code 55 est donc une erreur de CLecteur et le code 42 d'une autre classe
+*/
+#define NomFichierManquant 55
+#define EchecOuvertureFichier 56
+#define FormatFichierInvalide 57
 
 class CLecteur
 {
