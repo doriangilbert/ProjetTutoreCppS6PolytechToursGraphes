@@ -17,7 +17,7 @@ class CSommet
 
 		CSommet();
 
-		CSommet(CSommet &SOMParam);
+		//CSommet(CSommet &SOMParam);
 
 		CSommet(unsigned int uiId);
 
@@ -27,11 +27,21 @@ class CSommet
 
 		void SOMModifierId(unsigned int uiId);
 
-		void SOMAjouterArc(unsigned int uiDestination);
+		CListe<CArc*> SOMLireListePartants();
 
-		void SOMSupprimerArc(unsigned int uiDestination);
+		CListe<CArc*> SOMLireListeArrivants();
+		
+		void SOMAjouterArcPartants(unsigned int uiDestination);
 
-		CSommet& operator=(CSommet &SOMParam);
+		void SOMSupprimerArcPartants(unsigned int uiDestination);
+
+		void SOMAjouterArcArrivants(unsigned int uiDestination);
+
+		void SOMSupprimerArcArrivants(unsigned int uiDestination);
+
+		void SOMAfficher();
+
+		//CSommet& operator=(CSommet &SOMParam);
 
 };
 

@@ -2,10 +2,13 @@
 
 using namespace std;
 #include "CListe.h"
+#include "CSommet.h"
+#include "CArc.h"
+
 
 int main()
 {
-	cout << "TEST CLISTE \n";
+	/*cout << "TEST CLISTE \n";
 	CListe<char*> LIS1(5);
 	for (unsigned int uiBoucle = 0; uiBoucle < 5; uiBoucle++) {
 		LIS1.LISModifierElement(uiBoucle, (char*)"Salut");
@@ -39,9 +42,36 @@ int main()
 	}
 	catch (CException EXCErreur) {
 		cout << EXCErreur.EXCLireValeur() << endl;
-	}
+	}*/
+
+	cout << "TEST CArc \n";
+	CArc ARC1;
+	cout << ARC1.ARCLireDestination() <<"\n";
+	ARC1.ARCModifierDestination(2);
+	cout << ARC1.ARCLireDestination() << "\n";
+	CArc ARC2(ARC1), ARC3;
+	ARC3 = ARC2;
+	cout << ARC2.ARCLireDestination() << "\n";
+	cout << ARC3.ARCLireDestination() << "\n";
+
+	cout << "TEST CSommet \n";
+	CSommet SOM1;
+	SOM1.SOMAfficher();
+	SOM1.SOMAjouterArcArrivants(2);
+	SOM1.SOMAjouterArcArrivants(3);
+	SOM1.SOMAjouterArcArrivants(4);
+	SOM1.SOMAjouterArcPartants(2);
+	SOM1.SOMAjouterArcPartants(3);
+	SOM1.SOMAjouterArcPartants(5);
+	SOM1.SOMSupprimerArcArrivants(3);
+	SOM1.SOMSupprimerArcPartants(3);
+	SOM1.SOMAfficher();
+	CSommet SOM2(SOM1), SOM3;
+	cout << "recopie \n";
+	SOM2.SOMAfficher();
+	cout << "= \n";
+	SOM3.SOMAfficher();
 
 
-	
 }
 

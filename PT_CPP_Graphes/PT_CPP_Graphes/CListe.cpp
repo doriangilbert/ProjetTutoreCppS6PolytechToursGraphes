@@ -181,7 +181,7 @@ template<class MTYPE> void CListe<MTYPE>::LISSupprimerElement(unsigned int uiPos
 	{
 		for (unsigned int uiBoucle = uiPosition; uiBoucle < uiLISTaille - 1; uiBoucle++) 
 		{
-			pNouvelleListe[uiBoucle] = pLISListe[uiBoucle];
+			pNouvelleListe[uiBoucle] = pLISListe[uiBoucle+1];
 		}
 	}
 	pLISListe = pNouvelleListe;
