@@ -95,14 +95,16 @@ CListe<CArc*> CSommet::SOMLireListeArrivants() {
 	return LISSOMArrivants;
 }
 
-/**************************************************************************************************************
-***** SOMAJOUTERARCPARTANTS : Fonction permettant d'ajouter un arc à la liste des arcs partants du sommet *****
-***************************************************************************************************************
-***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à ajouter   *****
-***** Nécessite :                                                                                         *****
-***** Sortie :                                                                                            *****
-***** Entraine : LISSOMPartants contient la liste des sommets partants, additionnée du sommet à ajouter   *****
-**************************************************************************************************************/
+/*****************************************************************************************
+***** SOMAJOUTERARCPARTANTS : Fonction permettant d'ajouter un arc partant au sommet *****
+******************************************************************************************
+***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination *****
+***** de l'arc à ajouter                                                             *****
+***** Nécessite :                                                                    *****
+***** Sortie :                                                                       *****
+***** Entraine : LISSOMPartants contient la liste des sommets partants, additionnée  *****
+***** du sommet à ajouter                                                            *****
+*****************************************************************************************/
 void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 {
 	if (LISSOMPartants.LISLireTaille() != 0) {
@@ -120,14 +122,16 @@ void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 	LISSOMPartants.LISAjouterElement(ARCParam);
 }
 
-/********************************************************************************************************************
-***** SOMSUPPRIMERARCPARTANTS : Fonction permettant de supprimer un arc de la liste des arcs partants du sommet *****
-*********************************************************************************************************************
-***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à supprimer       *****
-***** Nécessite :                                                                                               *****
-***** Sortie :                                                                                                  *****
-***** Entraine : LISSOMPartants contient la liste des sommets partants, soustraite du sommet à supprimer        *****
-********************************************************************************************************************/
+/**********************************************************************************************
+***** SOMSUPPRIMERARCPARTANTS : Fonction permettant de supprimer un arc partant du sommet *****
+***********************************************************************************************
+***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de   *****
+***** l'arc à supprimer                                                                   *****
+***** Nécessite :                                                                         *****
+***** Sortie :                                                                            *****
+***** Entraine : LISSOMPartants contient la liste des sommets partants, soustraite du     *****
+***** sommet à supprimer                                                                  *****
+**********************************************************************************************/
 void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 {
 	if (LISSOMPartants.LISLireTaille() == 0) {
@@ -147,14 +151,16 @@ void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 	delete pARCArc;
 }
 
-/****************************************************************************************************************
-***** SOMAJOUTERARCARRIVANTS : Fonction permettant d'ajouter un arc à la liste des arcs arrivants au sommet *****
-*****************************************************************************************************************
-***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à ajouter     *****
-***** Nécessite :                                                                                           *****
-***** Sortie :                                                                                              *****
-***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, additionnée du sommet à ajouter   *****
-****************************************************************************************************************/
+/*******************************************************************************************
+***** SOMAJOUTERARCARRIVANTS : Fonction permettant d'ajouter un arc arrivant au sommet *****
+********************************************************************************************
+***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination   *****
+***** de l'arc à ajouter                                                               *****
+***** Nécessite :                                                                      *****
+***** Sortie :                                                                         *****
+***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, additionnée  *****
+***** du sommet à ajouter                                                              *****
+*******************************************************************************************/
 void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 {
 	if (LISSOMArrivants.LISLireTaille() != 0) {
@@ -172,14 +178,16 @@ void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 	LISSOMArrivants.LISAjouterElement(ARCParam);
 }
 
-/**********************************************************************************************************************
-***** SOMSUPPRIMERARCARRIVANTS : Fonction permettant de supprimer un arc de la liste des arcs arrivants au sommet *****
-***********************************************************************************************************************
-***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à supprimer         *****
-***** Nécessite :                                                                                                 *****
-***** Sortie :                                                                                                    *****
-***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, soustraite du sommet à supprimer        *****
-**********************************************************************************************************************/
+/************************************************************************************************
+***** SOMSUPPRIMERARCARRIVANTS : Fonction permettant de supprimer un arc arrivant du sommet *****
+*************************************************************************************************
+***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de     *****
+***** l'arc à supprimer                                                                     *****
+***** Nécessite :                                                                           *****
+***** Sortie :                                                                              *****
+***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, soustraite du     *****
+***** sommet à supprimer                                                                    *****
+************************************************************************************************/
 void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 {
 	if (LISSOMArrivants.LISLireTaille() == 0) {

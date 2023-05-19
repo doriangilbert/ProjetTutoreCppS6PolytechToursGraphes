@@ -85,44 +85,52 @@ class CSommet
 		*********************************************************************************/
 		CListe<CArc*> SOMLireListeArrivants();
 		
-		/**************************************************************************************************************
-		***** SOMAJOUTERARCPARTANTS : Fonction permettant d'ajouter un arc à la liste des arcs partants du sommet *****
-		***************************************************************************************************************
-		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à ajouter   *****
-		***** Nécessite :                                                                                         *****
-		***** Sortie :                                                                                            *****
-		***** Entraine : LISSOMPartants contient la liste des sommets partants, additionnée du sommet à ajouter   *****
-		**************************************************************************************************************/
+		/*****************************************************************************************
+		***** SOMAJOUTERARCPARTANTS : Fonction permettant d'ajouter un arc partant au sommet *****
+		******************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination *****
+		***** de l'arc à ajouter                                                             *****
+		***** Nécessite :                                                                    *****
+		***** Sortie :                                                                       *****
+		***** Entraine : LISSOMPartants contient la liste des sommets partants, additionnée  *****
+		***** du sommet à ajouter                                                            *****
+		*****************************************************************************************/
 		void SOMAjouterArcPartants(unsigned int uiDestination);
 
-		/********************************************************************************************************************
-		***** SOMSUPPRIMERARCPARTANTS : Fonction permettant de supprimer un arc de la liste des arcs partants du sommet *****
-		*********************************************************************************************************************
-		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à supprimer       *****
-		***** Nécessite :                                                                                               *****
-		***** Sortie :                                                                                                  *****
-		***** Entraine : LISSOMPartants contient la liste des sommets partants, soustraite du sommet à supprimer        *****
-		********************************************************************************************************************/
+		/**********************************************************************************************
+		***** SOMSUPPRIMERARCPARTANTS : Fonction permettant de supprimer un arc partant du sommet *****
+		***********************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de   *****
+		***** l'arc à supprimer                                                                   *****
+		***** Nécessite :                                                                         *****
+		***** Sortie :                                                                            *****
+		***** Entraine : LISSOMPartants contient la liste des sommets partants, soustraite du     *****
+		***** sommet à supprimer                                                                  *****
+		**********************************************************************************************/
 		void SOMSupprimerArcPartants(unsigned int uiDestination);
 
-		/****************************************************************************************************************
-		***** SOMAJOUTERARCARRIVANTS : Fonction permettant d'ajouter un arc à la liste des arcs arrivants au sommet *****
-		*****************************************************************************************************************
-		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à ajouter     *****
-		***** Nécessite :                                                                                           *****
-		***** Sortie :                                                                                              *****
-		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, additionnée du sommet à ajouter   *****
-		****************************************************************************************************************/
+		/*******************************************************************************************
+		***** SOMAJOUTERARCARRIVANTS : Fonction permettant d'ajouter un arc arrivant au sommet *****
+		********************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination   *****
+		***** de l'arc à ajouter                                                               *****
+		***** Nécessite :                                                                      *****
+		***** Sortie :                                                                         *****
+		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, additionnée  *****
+		***** du sommet à ajouter                                                              *****
+		*******************************************************************************************/
 		void SOMAjouterArcArrivants(unsigned int uiDestination);
 
-		/**********************************************************************************************************************
-		***** SOMSUPPRIMERARCARRIVANTS : Fonction permettant de supprimer un arc de la liste des arcs arrivants au sommet *****
-		***********************************************************************************************************************
-		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à supprimer         *****
-		***** Nécessite :                                                                                                 *****
-		***** Sortie :                                                                                                    *****
-		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, soustraite du sommet à supprimer        *****
-		**********************************************************************************************************************/
+		/************************************************************************************************
+		***** SOMSUPPRIMERARCARRIVANTS : Fonction permettant de supprimer un arc arrivant du sommet *****
+		*************************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de     *****
+		***** l'arc à supprimer                                                                     *****
+		***** Nécessite :                                                                           *****
+		***** Sortie :                                                                              *****
+		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, soustraite du     *****
+		***** sommet à supprimer                                                                    *****
+		************************************************************************************************/
 		void SOMSupprimerArcArrivants(unsigned int uiDestination);
 
 		/***************************************************************************
