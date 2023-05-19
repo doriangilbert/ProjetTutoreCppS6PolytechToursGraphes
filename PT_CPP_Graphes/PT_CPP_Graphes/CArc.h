@@ -17,7 +17,7 @@ class CArc
 		***** Sortie :                               *****
 		***** Entraine : Le contructeur a initialisé *****
 		***** un objet CArc avec uiARCDestination    *****
-		***** égal à NULL                            *****
+		***** égal à 0                               *****
 		*************************************************/
 		CArc();
 

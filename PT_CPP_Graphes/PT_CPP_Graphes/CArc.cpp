@@ -7,12 +7,12 @@
 ***** Nécessite :                            *****
 ***** Sortie :                               *****
 ***** Entraine : Le contructeur a initialisé *****
-***** un objet CLecteur avec                 *****
-***** uiARCDestination égal à NULL           *****
+***** un objet CArc avec uiARCDestination    *****
+***** égal à 0                               *****
 *************************************************/
 CArc::CArc()
 {
-	uiARCDestination = NULL;
+	uiARCDestination = 0;
 }
 
 /*************************************************
