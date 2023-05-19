@@ -9,36 +9,131 @@
 class CSommet
 {
 	private:
-		unsigned int uiSOMId;
-		CListe<CArc*> LISSOMPartants;
-		CListe<CArc*> LISSOMArrivants;
+		unsigned int uiSOMId; //Entier non signé, Identifiant du sommet
+		CListe<CArc*> LISSOMPartants; //Liste des arcs partants du sommet
+		CListe<CArc*> LISSOMArrivants; //Liste des arcs arrivants au sommet
 
 	public:
-
+		/*******************************************************
+		***** CSOMMET : Constructeur par défaut de CSommet *****
+		********************************************************
+		***** Entrée :                                     *****
+		***** Nécessite :                                  *****
+		***** Sortie :                                     *****
+		***** Entraine : Le contructeur a initialisé un    *****
+		***** objet CSommet avec uiSOMId égal à 0          *****
+		*******************************************************/
 		CSommet();
 
 		//CSommet(CSommet &SOMParam);
 
+		/*******************************************************
+		***** CSOMMET : Constructeur de confort de CSommet *****
+		********************************************************
+		***** Entrée : uiId, entier non signé, identifiant *****
+		***** du sommet                                    *****
+		***** Nécessite :                                  *****
+		***** Sortie :                                     *****
+		***** Entraine : Le contructeur a initialisé       *****
+		***** un objet CSommet ayant uiSOMId = uiId        *****
+		*******************************************************/
 		CSommet(unsigned int uiId);
 
-		~CSommet();
+		//~CSommet();
 
+		/*************************************************************
+		***** SOMLIREID : Accesseur direct en lecture de uiSOMId *****
+		**************************************************************
+		***** Entrée :                                           *****
+		***** Nécessite :                                        *****
+		***** Sortie : entier non signé, valeur de l'attribut    *****
+		***** uiSOMId                                            *****
+		***** Entraine : SOMLireId() = uiSOMId                   *****
+		*************************************************************/
 		unsigned int SOMLireId();
 
+		/******************************************************************
+		***** SOMMODIFIERID : Accesseur direct en écriture de uiSOMId *****
+		*******************************************************************
+		***** Entrée : uiSOMId, entier non signé, nouvelle valeur de  *****
+		***** uiSOMId                                                 *****
+		***** Nécessite :                                             *****
+		***** Sortie :                                                *****
+		***** Entraine : uiSOMId = uiId                               *****
+		******************************************************************/
 		void SOMModifierId(unsigned int uiId);
 
+		/*******************************************************************************
+		***** SOMLIRELISTEPARTANTS : Accesseur direct en lecture de LISSOMPartants *****
+		********************************************************************************
+		***** Entrée :                                                             *****
+		***** Nécessite :                                                          *****
+		***** Sortie : Objet de type CListe<CArc*>, valeur de l'attribut           *****
+		***** LISSOMPartants                                                       *****
+		***** Entraine : SOMLireListePartants() = LISSOMPartants                   *****
+		*******************************************************************************/
 		CListe<CArc*> SOMLireListePartants();
 
+		/*********************************************************************************
+		***** SOMLIRELISTEARRIVANTS : Accesseur direct en lecture de LISSOMArrivants *****
+		**********************************************************************************
+		***** Entrée :                                                               *****
+		***** Nécessite :                                                            *****
+		***** Sortie : Objet de type CListe<CArc*>, valeur de l'attribut             *****
+		***** LISSOMArrivants                                                        *****
+		***** Entraine : SOMLireListeArrivants() = LISSOMArrivants                   *****
+		*********************************************************************************/
 		CListe<CArc*> SOMLireListeArrivants();
 		
+		/**************************************************************************************************************
+		***** SOMAJOUTERARCPARTANTS : Fonction permettant d'ajouter un arc à la liste des arcs partants du sommet *****
+		***************************************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à ajouter   *****
+		***** Nécessite :                                                                                         *****
+		***** Sortie :                                                                                            *****
+		***** Entraine : LISSOMPartants contient la liste des sommets partants, additionnée du sommet à ajouter   *****
+		**************************************************************************************************************/
 		void SOMAjouterArcPartants(unsigned int uiDestination);
 
+		/********************************************************************************************************************
+		***** SOMSUPPRIMERARCPARTANTS : Fonction permettant de supprimer un arc de la liste des arcs partants du sommet *****
+		*********************************************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à supprimer       *****
+		***** Nécessite :                                                                                               *****
+		***** Sortie :                                                                                                  *****
+		***** Entraine : LISSOMPartants contient la liste des sommets partants, soustraite du sommet à supprimer        *****
+		********************************************************************************************************************/
 		void SOMSupprimerArcPartants(unsigned int uiDestination);
 
+		/****************************************************************************************************************
+		***** SOMAJOUTERARCARRIVANTS : Fonction permettant d'ajouter un arc à la liste des arcs arrivants au sommet *****
+		*****************************************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à ajouter     *****
+		***** Nécessite :                                                                                           *****
+		***** Sortie :                                                                                              *****
+		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, additionnée du sommet à ajouter   *****
+		****************************************************************************************************************/
 		void SOMAjouterArcArrivants(unsigned int uiDestination);
 
+		/**********************************************************************************************************************
+		***** SOMSUPPRIMERARCARRIVANTS : Fonction permettant de supprimer un arc de la liste des arcs arrivants au sommet *****
+		***********************************************************************************************************************
+		***** Entrée : uiDestination, entier non signé, identifiant du sommet de destination de l'arc à supprimer         *****
+		***** Nécessite :                                                                                                 *****
+		***** Sortie :                                                                                                    *****
+		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, soustraite du sommet à supprimer        *****
+		**********************************************************************************************************************/
 		void SOMSupprimerArcArrivants(unsigned int uiDestination);
 
+		/***************************************************************************
+		***** SOMAFFICHER : Fonction permettant d'afficher un sommet à l'écran *****
+		****************************************************************************
+		***** Entrée :                                                         *****
+		***** Nécessite :                                                      *****
+		***** Sortie :                                                         *****
+		***** Entraine : La fonction à affiché les informations du sommet à    *****
+		***** l'écran                                                          *****
+		***************************************************************************/
 		void SOMAfficher();
 
 		//CSommet& operator=(CSommet &SOMParam);
