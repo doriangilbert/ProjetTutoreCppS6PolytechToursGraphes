@@ -201,6 +201,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 	}
 	
 	//TODO : Créer Graphe (orienté)
+	CGraphe* GRAGraphe = new CGraphe(true);
 
 	//Lecture de la ligne suivante et erreur si la ligne est absente
 	if (!fgets(pcLigne, 1024, fichier))
@@ -247,7 +248,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 		}
 		else
 		{
-			//Récupération de la valeur de Numero=
+			//Récupération de la valeur de Numero
 			sscanf(pcLigne, "Numero=%d", &iNumero);
 			if (iNumero < 0)
 			{
@@ -261,6 +262,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 		}
 
 		//TODO : Créer Sommet avec uiNumero
+		GRAGraphe->GRAAjouterSommet(uiNumero);
 
 	}
 
@@ -331,7 +333,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			}
 			else
 			{
-				//Récupération de la valeur de Debut=
+				//Récupération de la valeur de Debut
 				sscanf(pcLigne, "Debut=%d", &iNumeroSommetDepart);
 				if (iNumeroSommetDepart < 0)
 				{
@@ -364,7 +366,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			}
 			else
 			{
-				//Récupération de la valeur de Fin=
+				//Récupération de la valeur de Fin
 				sscanf(pcLigne, "Fin=%d", &iNumeroSommetArrivee);
 				if (iNumeroSommetArrivee < 0)
 				{
@@ -389,7 +391,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			}
 			
 			//TODO : Ajouter Arc
-			
+			//Faire une méthode dans Graphe pour ajouter un arc qui prend une source et une destination et va modifier les listes d'arc dans les sommets concernés
 		}
 	}
 
@@ -415,5 +417,6 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 	}
 	
 	//TODO : Retourner Graphe
+	return *GRAGraphe;
 
 }
