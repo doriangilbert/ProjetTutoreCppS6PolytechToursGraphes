@@ -36,6 +36,17 @@ CSommet::CSommet(unsigned int uiId)
 	uiSOMId = uiId;
 }
 
+CSommet::CSommet(CSommet& SOMParam) {
+	
+	uiSOMId = SOMParam.SOMLireId();
+	for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) {
+		LISSOMArrivants.LISAjouterElement(new CArc(SOMParam.SOMLireListeArrivants().LISLireElement(uiBoucle)->ARCLireDestination()));
+	}
+	for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) {
+		LISSOMPartants.LISAjouterElement(new CArc(SOMParam.SOMLireListePartants().LISLireElement(uiBoucle)->ARCLireDestination()));
+	}
+}
+
 /*CSommet::~CSommet()
 {
 
@@ -234,8 +245,14 @@ void CSommet::SOMAfficher() {
 	}
 }
 
-/*CSommet& CSommet::operator=(CSommet &SOMParam)
+CSommet CSommet::operator=(CSommet SOMParam)
 {
-	CSommet TODO;
-	return TODO;
-}*/
+	uiSOMId = SOMParam.SOMLireId();
+	for (unsigned int uiBoucle = 0; uiBoucle<SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) {
+		LISSOMArrivants.LISAjouterElement(new CArc(SOMParam.SOMLireListeArrivants().LISLireElement(uiBoucle)->ARCLireDestination()));
+	}
+	for (unsigned int uiBoucle = 0; uiBoucle<SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) {
+		LISSOMPartants.LISAjouterElement(new CArc(SOMParam.SOMLireListePartants().LISLireElement(uiBoucle)->ARCLireDestination()));
+	}
+	return *this;
+}

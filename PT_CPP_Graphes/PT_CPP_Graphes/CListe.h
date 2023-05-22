@@ -39,7 +39,7 @@ template<class MTYPE> class CListe
 		***** en paramètre OU                                          *****
 		***** EXCEPTION ListeVide: On ne recopie pas une liste vide    *****
 		*******************************************************************/
-		CListe<MTYPE>(CListe<MTYPE> &LISParam);
+		CListe<MTYPE>(CListe<MTYPE>& LISParam);
 		
 		/*******************************************************************
 		***** CLISTE<MTYPE> : Constructeur de confort de CLISTE<MTYPE> *****

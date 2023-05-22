@@ -13,6 +13,7 @@ class CSommet
 		CListe<CArc*> LISSOMPartants; //Liste des arcs partants du sommet
 		CListe<CArc*> LISSOMArrivants; //Liste des arcs arrivants au sommet
 
+
 	public:
 		/*******************************************************
 		***** CSOMMET : Constructeur par défaut de CSommet *****
@@ -25,7 +26,6 @@ class CSommet
 		*******************************************************/
 		CSommet();
 
-		//CSommet(CSommet &SOMParam);
 
 		/*******************************************************
 		***** CSOMMET : Constructeur de confort de CSommet *****
@@ -39,6 +39,8 @@ class CSommet
 		*******************************************************/
 		CSommet(unsigned int uiId);
 
+		CSommet(CSommet& SOMParam);
+		
 		//~CSommet();
 
 		/*************************************************************
@@ -144,7 +146,7 @@ class CSommet
 		***************************************************************************/
 		void SOMAfficher();
 
-		//CSommet& operator=(CSommet &SOMParam);
+		CSommet operator=(CSommet SOMParam);
 
 };
 

@@ -1,7 +1,6 @@
 #ifndef CGraphe_h
 #define CGraphe_h
 
-#include "CListe.h"
 #include "CSommet.h"
 
 #define NULL 0;

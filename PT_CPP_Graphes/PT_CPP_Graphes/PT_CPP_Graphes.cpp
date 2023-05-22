@@ -54,6 +54,12 @@ int main()
 	cout << ARC2.ARCLireDestination() << "\n";
 	cout << ARC3.ARCLireDestination() << "\n";
 
+	CListe<CArc*> LISARC1, LISARC2;
+	LISARC1.LISAjouterElement(&ARC1);
+	LISARC2 = LISARC1;
+	LISARC1.LISAfficher();
+	LISARC2.LISAfficher();
+	
 	cout << "TEST CSommet \n";
 	CSommet SOM1;
 	SOM1.SOMAfficher();
@@ -67,11 +73,14 @@ int main()
 	SOM1.SOMSupprimerArcPartants(3);
 	SOM1.SOMAfficher();
 	CSommet SOM2(SOM1), SOM3;
+	SOM3 = SOM1;
 	cout << "recopie \n";
 	SOM2.SOMAfficher();
 	cout << "= \n";
 	SOM3.SOMAfficher();
 
+	CListe<CSommet> LISSOM1,LISSOM2;
+	LISSOM1.LISAjouterElement(SOM1);
 
 }
 

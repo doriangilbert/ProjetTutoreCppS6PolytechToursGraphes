@@ -63,10 +63,10 @@ bool CGraphe::GRALireEstOriente()
 ***** LISGRASommet                                                     *****
 ***** Entraine : GRALireListeSommet() = LISGRASommet                   *****
 ***************************************************************************/
-CListe<CSommet> CGraphe::GRALireListeSommet()
-{
-	return LISGRASommet;
-}
+//CListe<CSommet> CGraphe::GRALireListeSommet()
+//{
+//	return *new CListe<CSommet>(LISGRASommet);
+//}
 
 /*******************************************************************************
 ***** GRAAJOUTERSOMMET : Fonction permettant d'ajouter un sommet au graphe *****
