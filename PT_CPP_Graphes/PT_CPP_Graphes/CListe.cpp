@@ -97,7 +97,7 @@ template<class MTYPE> unsigned int CListe<MTYPE>::LISLireTaille()
 ***** EXCEPTION DepassementDeTaille: Essaye d'acceder à un element hors de    *****
 ***** la liste                                                                *****
 **********************************************************************************/
-template<class MTYPE> MTYPE CListe<MTYPE>::LISLireElement(unsigned int uiPosition) 
+template<class MTYPE> MTYPE& CListe<MTYPE>::LISLireElement(unsigned int uiPosition) 
 {
 	if (uiPosition >= uiLISTaille) 
 	{

@@ -81,6 +81,8 @@ int main()
 
 	CListe<CSommet> LISSOM1,LISSOM2;
 	LISSOM1.LISAjouterElement(SOM1);
+	SOM1 = LISSOM1.LISLireElement(0);
+	LISSOM2 = LISSOM1;
 
 }
 

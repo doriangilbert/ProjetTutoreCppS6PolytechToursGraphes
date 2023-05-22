@@ -75,7 +75,7 @@ template<class MTYPE> class CListe
 		***** EXCEPTION DepassementDeTaille: Essaye d'acceder à un element hors de    *****
 		***** la liste                                                                *****
 		**********************************************************************************/
-		MTYPE LISLireElement(unsigned int uiPosition);
+		MTYPE& LISLireElement(unsigned int uiPosition);
 		
 		/*****************************************************************************
 		***** LISAJOUTERELEMENT : Permet d'ajouter un element en fin de la liste *****
