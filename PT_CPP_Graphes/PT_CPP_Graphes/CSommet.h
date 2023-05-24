@@ -148,6 +148,8 @@ class CSommet
 
 		CSommet operator=(CSommet SOMParam);
 
+		void SOMInverserListesArc();
+
 };
 
 #endif

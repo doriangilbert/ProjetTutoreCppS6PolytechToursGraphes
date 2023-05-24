@@ -79,6 +79,7 @@ CListe<CSommet> CGraphe::GRALireListeSommet()
 *******************************************************************************/
 void CGraphe::GRAAjouterSommet(unsigned int uiId)
 {
+	CSommet SOM1=*new CSommet(uiId);
 	if (LISGRASommet.LISLireTaille() != 0) {
 		bool bEstDejaDansLaListe = false;
 		unsigned int uiBoucle = 0;
@@ -89,6 +90,10 @@ void CGraphe::GRAAjouterSommet(unsigned int uiId)
 		if (bEstDejaDansLaListe == true) {
 			//Exception....
 		}
+		LISGRASommet.LISAjouterElement(SOM1);
+	}
+	else {
+		LISGRASommet.LISAjouterElement(SOM1);
 	}
 }
 
@@ -129,9 +134,95 @@ void CGraphe::GRASupprimerSommet(unsigned int uiId)
 ***************************************************************************/
 void CGraphe::GRAAfficher()
 {
+	if (bGRAEstOriente) {
+		cout << "Le graphe est oriente \n";
+	}
+	else {
+		cout << "Le graphe n'est pas oriente \n";
+	}
+	if (LISGRASommet.LISLireTaille() != 0) {
+		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
+			LISGRASommet.LISLireElement(uiBoucle).SOMAfficher();
+		}
+	}
+	else {
+		cout << "Le Graphe est vide";
+	}
 
 }
 
+void CGraphe::GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestination) {
+	unsigned int uiPositionSommet = 0;
+	unsigned int uiPositionDestination = 0;
+	bool bTrouveSommet = false;
+	bool bTrouveDestination = false;
+	unsigned int uiBoucle = 0;
+	while ((bTrouveSommet == false || bTrouveDestination == false) && uiBoucle < LISGRASommet.LISLireTaille()) {
+		if (bTrouveSommet == false) {
+			bTrouveSommet = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdSommet;
+			if (bTrouveSommet == true) {
+				uiPositionSommet = uiBoucle;
+			}
+		}
+		if (bTrouveDestination == false) {
+			bTrouveDestination = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdDestination;
+			if (bTrouveDestination == true) {
+				uiPositionDestination = uiBoucle;
+			}
+		}
+		uiBoucle++;
+	}
+	if (bTrouveSommet == false || bTrouveDestination == false) {
+		//Exception....
+	}
+	else {
+		LISGRASommet.LISLireElement(uiPositionSommet).SOMAjouterArcPartants(uiIdDestination);
+		LISGRASommet.LISLireElement(uiPositionDestination).SOMAjouterArcArrivants(uiIdSommet);
+		if (!bGRAEstOriente) {
+			LISGRASommet.LISLireElement(uiPositionSommet).SOMAjouterArcArrivants(uiIdDestination);
+			LISGRASommet.LISLireElement(uiPositionDestination).SOMAjouterArcPartants(uiIdSommet);
+		}
+	}
+}
+void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestination) {
+	unsigned int uiPositionSommet = 0;
+	unsigned int uiPositionDestination = 0;
+	bool bTrouveSommet = false;
+	bool bTrouveDestination = false;
+	unsigned int uiBoucle = 0;
+	while ((bTrouveSommet == false || bTrouveDestination == false) && uiBoucle < LISGRASommet.LISLireTaille()) {
+		if (bTrouveSommet == false) {
+			bTrouveSommet = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdSommet;
+			if (bTrouveSommet == true) {
+				uiPositionSommet = uiBoucle;
+			}
+		}
+		if (bTrouveDestination == false) {
+			bTrouveDestination = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdDestination;
+			if (bTrouveDestination == true) {
+				uiPositionDestination = uiBoucle;
+			}
+		}
+		uiBoucle++;
+	}
+	if (bTrouveSommet == false || bTrouveDestination == false) {
+		//Exception....
+	}
+	else {
+		LISGRASommet.LISLireElement(uiPositionSommet).SOMSupprimerArcPartants(uiIdDestination);
+		LISGRASommet.LISLireElement(uiPositionDestination).SOMSupprimerArcArrivants(uiIdSommet);
+		if (!bGRAEstOriente) {
+			LISGRASommet.LISLireElement(uiPositionSommet).SOMSupprimerArcArrivants(uiIdDestination);
+			LISGRASommet.LISLireElement(uiPositionDestination).SOMSupprimerArcPartants(uiIdSommet);
+		}
+	}
+}
+
+void CGraphe::GRAInverserGraphe() {
+	for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
+		LISGRASommet.LISLireElement(uiBoucle).SOMInverserListesArc();
+	}
+}
 /*CGraphe& CGraphe::operator=(CGraphe& GRAParam)
 {
 	CGraphe TODO;

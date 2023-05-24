@@ -32,18 +32,20 @@ template<class MTYPE> CListe<MTYPE>::CListe()
 *******************************************************************/
 template<class MTYPE> CListe<MTYPE>::CListe(CListe<MTYPE> &LISParam) 
 {
-	if (LISParam.LISLireTaille() == 0) 
+	if (LISParam.LISLireTaille() == 0)
 	{
-		CException EXCErreur;
-		EXCErreur.EXCModifierValeur(ListeVide);
-		throw EXCErreur;
+		uiLISTaille = 0;
+		pLISListe = nullptr;
 	}
-	uiLISTaille = LISParam.LISLireTaille();
-	pLISListe = new MTYPE[uiLISTaille];
-	for (unsigned int uiBoucle=0; uiBoucle < uiLISTaille; uiBoucle++) 
-	{
-		pLISListe[uiBoucle] = LISParam.LISLireElement(uiBoucle);
+	else {
+		uiLISTaille = LISParam.LISLireTaille();
+		pLISListe = new MTYPE[uiLISTaille];
+		for (unsigned int uiBoucle = 0; uiBoucle < uiLISTaille; uiBoucle++)
+		{
+			pLISListe[uiBoucle] = LISParam.LISLireElement(uiBoucle);
+		}
 	}
+
 }
 
 /*******************************************************************

@@ -37,14 +37,19 @@ CSommet::CSommet(unsigned int uiId)
 }
 
 CSommet::CSommet(CSommet& SOMParam) {
-	
+
 	uiSOMId = SOMParam.SOMLireId();
-	for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) {
+	if (SOMParam.SOMLireListeArrivants().LISLireTaille() != 0) {
+		for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) {
 		LISSOMArrivants.LISAjouterElement(new CArc(SOMParam.SOMLireListeArrivants().LISLireElement(uiBoucle)->ARCLireDestination()));
+		}
 	}
-	for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) {
-		LISSOMPartants.LISAjouterElement(new CArc(SOMParam.SOMLireListePartants().LISLireElement(uiBoucle)->ARCLireDestination()));
+	if (SOMParam.SOMLireListePartants().LISLireTaille() != 0) {
+		for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) {
+			LISSOMPartants.LISAjouterElement(new CArc(SOMParam.SOMLireListePartants().LISLireElement(uiBoucle)->ARCLireDestination()));
+		}
 	}
+	
 }
 
 /*CSommet::~CSommet()
@@ -255,4 +260,10 @@ CSommet CSommet::operator=(CSommet SOMParam)
 		LISSOMPartants.LISAjouterElement(new CArc(SOMParam.SOMLireListePartants().LISLireElement(uiBoucle)->ARCLireDestination()));
 	}
 	return *this;
+}
+
+void CSommet::SOMInverserListesArc() {
+	CListe<CArc*> LISArc = LISSOMArrivants;
+	LISSOMArrivants = LISSOMPartants;
+	LISSOMPartants = LISArc;
 }

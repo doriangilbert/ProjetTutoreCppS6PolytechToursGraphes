@@ -4,6 +4,7 @@ using namespace std;
 #include "CListe.h"
 #include "CSommet.h"
 #include "CArc.h"
+#include "CGraphe.h"
 
 
 int main()
@@ -42,7 +43,7 @@ int main()
 	}
 	catch (CException EXCErreur) {
 		cout << EXCErreur.EXCLireValeur() << endl;
-	}*/
+	}
 
 	cout << "TEST CArc \n";
 	CArc ARC1;
@@ -53,13 +54,14 @@ int main()
 	ARC3 = ARC2;
 	cout << ARC2.ARCLireDestination() << "\n";
 	cout << ARC3.ARCLireDestination() << "\n";
-
+	
 	CListe<CArc*> LISARC1, LISARC2;
+	LISARC1.LISAjouterElement(&ARC1);
 	LISARC1.LISAjouterElement(&ARC1);
 	LISARC2 = LISARC1;
 	LISARC1.LISAfficher();
 	LISARC2.LISAfficher();
-	
+	*/
 	cout << "TEST CSommet \n";
 	CSommet SOM1;
 	SOM1.SOMAfficher();
@@ -79,10 +81,15 @@ int main()
 	cout << "= \n";
 	SOM3.SOMAfficher();
 
-	CListe<CSommet> LISSOM1,LISSOM2;
-	LISSOM1.LISAjouterElement(SOM1);
-	SOM1 = LISSOM1.LISLireElement(0);
-	LISSOM2 = LISSOM1;
-
+	cout << "TEST CGraphe\n";
+	CGraphe GRA1;
+	GRA1.GRAAfficher();
+	GRA1.GRAAjouterSommet(1);
+	GRA1.GRAAjouterSommet(2);
+	GRA1.GRAAfficher();
+	GRA1.GRAAjouterArc(1, 2);
+	GRA1.GRAAfficher();
+	GRA1.GRASupprimerArc(1, 2);
+	GRA1.GRAAfficher();
 }
 

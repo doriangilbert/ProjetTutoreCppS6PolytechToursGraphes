@@ -95,6 +95,12 @@ class CGraphe
 		***************************************************************************/
 		void GRAAfficher();
 
+		void GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestination);
+
+		void GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestination);
+
+		void GRAInverserGraphe();
+		
 		//CGraphe& operator=(CGraphe &GRAParam);
 
 };
