@@ -107,19 +107,19 @@ class CLecteur
 		******************************************************************************************/
 		CLecteur& operator=(CLecteur& LECParam);
 
-		/**********************************************************************************************
-		***** LECLIREFICHIERGRAPHE : Fonction permettant de créer un graphe à partir d'un fichier *****
-		***********************************************************************************************
-		***** Entrée :                                                                            *****
-		***** Nécessite : - pcLECNomFichier contient un nom de fichier                            *****
-		***** - Le format du fichier est valide                                                   *****
-		***** Sortie : objet CGraphe, retourné par référence                                      *****
-		***** Entraine : Un objet CGraphe à été initialisé correspondant au contenu du            *****
-		***** fichier OU                                                                          *****
-		***** Exception NomFichierManquant : Nom de fichier manquant OU                           *****
-		***** Exception EchecOuvertureFichier : Echec d'ouverture de fichier OU                   *****
-		***** Exception FormatFichierInvalide : Format de fichier invalide                        *****
-		**********************************************************************************************/
+		/******************************************************************************************************
+		***** LECLIREFICHIERGRAPHE : Fonction permettant de créer un graphe orienté à partir d'un fichier *****
+		*******************************************************************************************************
+		***** Entrée :                                                                                    *****
+		***** Nécessite : - pcLECNomFichier contient un nom de fichier                                    *****
+		***** - Le format du fichier est valide                                                           *****
+		***** Sortie : objet CGraphe, retourné par référence                                              *****
+		***** Entraine : Un objet CGraphe (orienté) à été initialisé correspondant au contenu du          *****
+		***** fichier OU                                                                                  *****
+		***** Exception NomFichierManquant : Nom de fichier manquant OU                                   *****
+		***** Exception EchecOuvertureFichier : Echec d'ouverture de fichier OU                           *****
+		***** Exception FormatFichierInvalide : Format de fichier invalide                                *****
+		******************************************************************************************************/
 		CGraphe& LECLireFichierGraphe();
 
 };

@@ -5,11 +5,13 @@ using namespace std;
 #include "CSommet.h"
 #include "CArc.h"
 #include "CGraphe.h"
+#include "CLecteur.h"
 
 
-int main()
+int main(int argc, char* argv[])
 {
-	/*cout << "TEST CLISTE \n";
+	/*
+	cout << "TEST CLISTE \n";
 	CListe<char*> LIS1(5);
 	for (unsigned int uiBoucle = 0; uiBoucle < 5; uiBoucle++) {
 		LIS1.LISModifierElement(uiBoucle, (char*)"Salut");
@@ -44,7 +46,9 @@ int main()
 	catch (CException EXCErreur) {
 		cout << EXCErreur.EXCLireValeur() << endl;
 	}
+	*/
 
+	/*
 	cout << "TEST CArc \n";
 	CArc ARC1;
 	cout << ARC1.ARCLireDestination() <<"\n";
@@ -62,7 +66,9 @@ int main()
 	LISARC1.LISAfficher();
 	LISARC2.LISAfficher();
 	*/
-	/*cout << "TEST CSommet \n";
+
+	/*
+	cout << "TEST CSommet \n";
 	CSommet SOM1;
 	SOM1.SOMAfficher();
 	SOM1.SOMAjouterArcArrivants(2);
@@ -79,8 +85,10 @@ int main()
 	cout << "recopie \n";
 	SOM2.SOMAfficher();
 	cout << "= \n";
-	SOM3.SOMAfficher();*/
+	SOM3.SOMAfficher();
+	*/
 
+	/*
 	cout << "TEST CGraphe\n";
 	CGraphe GRA1(false);
 	GRA1.GRAAfficher();
@@ -92,5 +100,25 @@ int main()
 	GRA1.GRAAfficher();
 	GRA1.GRASupprimerSommet(3);
 	GRA1.GRAAfficher();
+	*/
+
+	cout << "TEST CLecteur\n";
+	try {
+		if (argc == 1 || argc > 2) {
+			//Voir pour gérer avec une exception
+			cout << "Utilisation de la lecture de fichier impossible : Pas de nom de fichier specifie ou plus de un fichier specifie" << endl;
+		}
+		else {
+			CLecteur* LECLecteur = new CLecteur(argv[1]);
+			CGraphe GRAGraphe = LECLecteur->LECLireFichierGraphe();
+			GRAGraphe.GRAAfficher();
+		}
+	}
+	catch (CException EXCErreur) {
+		if (EXCErreur.EXCLireValeur() == NomFichierManquant) cout << "ERREUR : Nom de fichier manquant\n";
+		if (EXCErreur.EXCLireValeur() == EchecOuvertureFichier) cout << "ERREUR : Echec d'ouverture de fichier\n";
+		if (EXCErreur.EXCLireValeur() == FormatFichierInvalide) cout << "ERREUR : Format de fichier invalide\n";
+		cout << "ERREUR : Code d'erreur : " << EXCErreur.EXCLireValeur() << endl;
+	}
 }
 

@@ -105,19 +105,19 @@ CLecteur& CLecteur::operator=(CLecteur& LECParam)
 	return *this;
 }
 
-/**********************************************************************************************
-***** LECLIREFICHIERGRAPHE : Fonction permettant de créer un graphe à partir d'un fichier *****
-***********************************************************************************************
-***** Entrée :                                                                            *****
-***** Nécessite : - pcLECNomFichier contient un nom de fichier                            *****
-***** - Le format du fichier est valide                                                   *****
-***** Sortie : objet CGraphe, retourné par référence                                      *****
-***** Entraine : Un objet CGraphe à été initialisé correspondant au contenu du            *****
-***** fichier OU                                                                          *****
-***** Exception NomFichierManquant : Nom de fichier manquant OU                           *****
-***** Exception EchecOuvertureFichier : Echec d'ouverture de fichier OU                   *****
-***** Exception FormatFichierInvalide : Format de fichier invalide                        *****
-**********************************************************************************************/
+/******************************************************************************************************
+***** LECLIREFICHIERGRAPHE : Fonction permettant de créer un graphe orienté à partir d'un fichier *****
+*******************************************************************************************************
+***** Entrée :                                                                                    *****
+***** Nécessite : - pcLECNomFichier contient un nom de fichier                                    *****
+***** - Le format du fichier est valide                                                           *****
+***** Sortie : objet CGraphe, retourné par référence                                              *****
+***** Entraine : Un objet CGraphe (orienté) à été initialisé correspondant au contenu du          *****
+***** fichier OU                                                                                  *****
+***** Exception NomFichierManquant : Nom de fichier manquant OU                                   *****
+***** Exception EchecOuvertureFichier : Echec d'ouverture de fichier OU                           *****
+***** Exception FormatFichierInvalide : Format de fichier invalide                                *****
+******************************************************************************************************/
 CGraphe& CLecteur::LECLireFichierGraphe() 
 {
 	//On vérifie la présence d'un nom de fichier
@@ -200,8 +200,8 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 		}
 	}
 	
-	//TODO : Créer Graphe (orienté)
-	//CGraphe* GRAGraphe = new CGraphe(true);
+	//Créer le graphe (orienté)
+	CGraphe* GRAGraphe = new CGraphe(true);
 
 	//Lecture de la ligne suivante et erreur si la ligne est absente
 	if (!fgets(pcLigne, 1024, fichier))
@@ -261,8 +261,8 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			}
 		}
 
-		//TODO : Créer Sommet avec uiNumero
-		//GRAGraphe->GRAAjouterSommet(uiNumero);
+		//Créer le sommet avec uiNumero
+		GRAGraphe->GRAAjouterSommet(uiNumero);
 
 	}
 
@@ -396,7 +396,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			}
 			
 			//TODO : Ajouter Arc
-			//Faire une méthode dans Graphe pour ajouter un arc qui prend une source et une destination et va modifier les listes d'arc dans les sommets concernés
+			GRAGraphe->GRAAjouterArc(uiNumeroSommetDepart, uiNumeroSommetArrivee);
 		}
 	}
 
@@ -421,7 +421,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 		fclose(fichier);
 	}
 	
-	//TODO : Retourner Graphe
-	//return *GRAGraphe;
+	//Retourner le graphe
+	return *GRAGraphe;
 
 }
