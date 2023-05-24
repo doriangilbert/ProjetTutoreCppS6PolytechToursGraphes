@@ -201,7 +201,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 	}
 	
 	//TODO : Créer Graphe (orienté)
-	CGraphe* GRAGraphe = new CGraphe(true);
+	//CGraphe* GRAGraphe = new CGraphe(true);
 
 	//Lecture de la ligne suivante et erreur si la ligne est absente
 	if (!fgets(pcLigne, 1024, fichier))
@@ -262,7 +262,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 		}
 
 		//TODO : Créer Sommet avec uiNumero
-		GRAGraphe->GRAAjouterSommet(uiNumero);
+		//GRAGraphe->GRAAjouterSommet(uiNumero);
 
 	}
 
@@ -325,7 +325,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 		while (*pcParcoursChaine != '\n')
 		{
 			//Vérification de la présence de Debut=
-			if (strncmp(pcLigne, "Debut=", 6) != 0)
+			if (strncmp(pcParcoursChaine, "Debut=", 6) != 0)
 			{
 				CException EXCErreur;
 				EXCErreur.EXCModifierValeur(FormatFichierInvalide);
@@ -334,7 +334,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			else
 			{
 				//Récupération de la valeur de Debut
-				sscanf(pcLigne, "Debut=%d", &iNumeroSommetDepart);
+				sscanf(pcParcoursChaine, "Debut=%d", &iNumeroSommetDepart);
 				if (iNumeroSommetDepart < 0)
 				{
 					CException EXCErreur;
@@ -346,10 +346,15 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 				}
 			}
 
-			if (strchr(pcParcoursChaine, ', '))
+			//On ignore la virgule et les espaces avant et après celle-ci
+			if (strchr(pcParcoursChaine, ','))
 			{
-				pcParcoursChaine = strchr(pcParcoursChaine, ', ');
+				pcParcoursChaine = strchr(pcParcoursChaine, ',');
 				pcParcoursChaine++;
+				while (strchr(pcParcoursChaine, ' ')) {
+					pcParcoursChaine = strchr(pcParcoursChaine, ' ');
+					pcParcoursChaine++;
+				}
 			}
 			else
 			{
@@ -358,7 +363,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			}
 
 			//Vérification de la présence de Fin=
-			if (strncmp(pcLigne, "Fin=", 4) != 0)
+			if (strncmp(pcParcoursChaine, "Fin=", 4) != 0)
 			{
 				CException EXCErreur;
 				EXCErreur.EXCModifierValeur(FormatFichierInvalide);
@@ -367,7 +372,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			else
 			{
 				//Récupération de la valeur de Fin
-				sscanf(pcLigne, "Fin=%d", &iNumeroSommetArrivee);
+				sscanf(pcParcoursChaine, "Fin=%d", &iNumeroSommetArrivee);
 				if (iNumeroSommetArrivee < 0)
 				{
 					CException EXCErreur;
@@ -379,6 +384,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 				}
 			}
 
+			//On ignore les espaces de fin de chaine
 			if (strchr(pcParcoursChaine, ' '))
 			{
 				pcParcoursChaine = strchr(pcParcoursChaine, ' ');
@@ -386,7 +392,6 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			}
 			else
 			{
-				//On va directement à la fin de la chaine si pas d'élément suivant
 				pcParcoursChaine = strchr(pcParcoursChaine, '\n');
 			}
 			
@@ -417,6 +422,6 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 	}
 	
 	//TODO : Retourner Graphe
-	return *GRAGraphe;
+	//return *GRAGraphe;
 
 }
