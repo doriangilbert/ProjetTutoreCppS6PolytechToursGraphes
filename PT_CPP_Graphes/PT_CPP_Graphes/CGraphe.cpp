@@ -79,7 +79,17 @@ CListe<CSommet> CGraphe::GRALireListeSommet()
 *******************************************************************************/
 void CGraphe::GRAAjouterSommet(unsigned int uiId)
 {
-
+	if (LISGRASommet.LISLireTaille() != 0) {
+		bool bEstDejaDansLaListe = false;
+		unsigned int uiBoucle = 0;
+		while (bEstDejaDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) {
+			bEstDejaDansLaListe = (uiId == LISGRASommet.LISLireElement(uiBoucle).SOMLireId());
+			uiBoucle++;
+		}
+		if (bEstDejaDansLaListe == true) {
+			//Exception....
+		}
+	}
 }
 
 /************************************************************************************
@@ -93,7 +103,19 @@ void CGraphe::GRAAjouterSommet(unsigned int uiId)
 ************************************************************************************/
 void CGraphe::GRASupprimerSommet(unsigned int uiId)
 {
-
+	if (LISGRASommet.LISLireTaille() == 0) {
+		//Exception...
+	}
+	bool bEstDansLaListe = false;
+	unsigned int uiBoucle = 0;
+	while (bEstDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) {
+		bEstDansLaListe = (uiId == LISGRASommet.LISLireElement(uiBoucle).SOMLireId());
+		uiBoucle++;
+	}
+	if (bEstDansLaListe == false) {
+		//Exception....
+	}
+	LISGRASommet.LISSupprimerElement(uiBoucle - 1);
 }
 
 /***************************************************************************
