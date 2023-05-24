@@ -218,8 +218,8 @@ void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 	if (bEstDansLaListe == false) {
 		//Exception....
 	}
-	CArc* pARCArc = LISSOMArrivants.LISLireElement(uiBoucle - 1);
-	LISSOMArrivants.LISSupprimerElement(uiBoucle - 1);
+	CArc* pARCArc = LISSOMArrivants.LISLireElement(uiBoucle-1);
+	LISSOMArrivants.LISSupprimerElement(uiBoucle-1);
 	delete pARCArc;
 }
 

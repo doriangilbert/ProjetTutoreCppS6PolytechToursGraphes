@@ -54,7 +54,7 @@ int main()
 	ARC3 = ARC2;
 	cout << ARC2.ARCLireDestination() << "\n";
 	cout << ARC3.ARCLireDestination() << "\n";
-	
+
 	CListe<CArc*> LISARC1, LISARC2;
 	LISARC1.LISAjouterElement(&ARC1);
 	LISARC1.LISAjouterElement(&ARC1);
@@ -62,7 +62,7 @@ int main()
 	LISARC1.LISAfficher();
 	LISARC2.LISAfficher();
 	*/
-	cout << "TEST CSommet \n";
+	/*cout << "TEST CSommet \n";
 	CSommet SOM1;
 	SOM1.SOMAfficher();
 	SOM1.SOMAjouterArcArrivants(2);
@@ -79,17 +79,18 @@ int main()
 	cout << "recopie \n";
 	SOM2.SOMAfficher();
 	cout << "= \n";
-	SOM3.SOMAfficher();
+	SOM3.SOMAfficher();*/
 
 	cout << "TEST CGraphe\n";
-	CGraphe GRA1;
+	CGraphe GRA1(false);
 	GRA1.GRAAfficher();
 	GRA1.GRAAjouterSommet(1);
 	GRA1.GRAAjouterSommet(2);
-	GRA1.GRAAfficher();
+	GRA1.GRAAjouterSommet(3);
 	GRA1.GRAAjouterArc(1, 2);
+	GRA1.GRAAjouterArc(1, 3);
 	GRA1.GRAAfficher();
-	GRA1.GRASupprimerArc(1, 2);
+	GRA1.GRASupprimerSommet(3);
 	GRA1.GRAAfficher();
 }
 

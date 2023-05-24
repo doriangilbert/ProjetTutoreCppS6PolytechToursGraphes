@@ -228,17 +228,19 @@ template<class MTYPE> CListe<MTYPE>& CListe<MTYPE>::operator=(CListe<MTYPE> LISP
 	unsigned int uiTaille = LISParam.LISLireTaille();
 	if (uiTaille == 0) 
 	{
-		CException EXCErreur;
-		EXCErreur.EXCModifierValeur(ListeVide);
-		throw EXCErreur;
+		uiLISTaille = 0;
+		pLISListe = nullptr;
 	}
-	uiLISTaille = uiTaille;
-	pLISListe = new MTYPE[uiLISTaille];
-	for (unsigned int uiBoucle = 0; uiBoucle < uiLISTaille; uiBoucle++) 
-	{
-		pLISListe[uiBoucle] = LISParam.LISLireElement(uiBoucle);
+	else {
+		uiLISTaille = uiTaille;
+		pLISListe = new MTYPE[uiLISTaille];
+		for (unsigned int uiBoucle = 0; uiBoucle < uiLISTaille; uiBoucle++)
+		{
+			pLISListe[uiBoucle] = LISParam.LISLireElement(uiBoucle);
+		}
+		return *this;
 	}
-	return *this;
+
 }
 
 #endif

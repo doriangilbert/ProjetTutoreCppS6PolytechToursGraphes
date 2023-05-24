@@ -121,6 +121,29 @@ void CGraphe::GRASupprimerSommet(unsigned int uiId)
 		//Exception....
 	}
 	LISGRASommet.LISSupprimerElement(uiBoucle - 1);
+	if (LISGRASommet.LISLireTaille() != 0) {
+		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
+			bool bTrouveDest = false;
+			for (unsigned int uiBoucle2 = 0; uiBoucle2 < LISGRASommet.LISLireElement(uiBoucle).SOMLireListeArrivants().LISLireTaille();uiBoucle2++) {
+				if (LISGRASommet.LISLireElement(uiBoucle).SOMLireListeArrivants().LISLireElement(uiBoucle2)->ARCLireDestination() == uiId) {
+					bTrouveDest = true;
+				}
+			}
+			if (bTrouveDest == true) {
+				LISGRASommet.LISLireElement(uiBoucle).SOMSupprimerArcArrivants(uiId);
+			}
+			bTrouveDest = false;
+			for( unsigned int uiBoucle2=0;uiBoucle2 < LISGRASommet.LISLireElement(uiBoucle).SOMLireListePartants().LISLireTaille() ; uiBoucle2++) {
+				if (LISGRASommet.LISLireElement(uiBoucle).SOMLireListePartants().LISLireElement(uiBoucle2)->ARCLireDestination() == uiId) {
+					bTrouveDest = true;
+
+				}
+			}
+			if (bTrouveDest == true) {
+				LISGRASommet.LISLireElement(uiBoucle).SOMSupprimerArcPartants(uiId);
+			}
+		}
+	}
 }
 
 /***************************************************************************
@@ -146,7 +169,7 @@ void CGraphe::GRAAfficher()
 		}
 	}
 	else {
-		cout << "Le Graphe est vide";
+		cout << "Le Graphe est vide\n";
 	}
 
 }
