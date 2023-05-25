@@ -126,6 +126,7 @@ CListe<CArc*> CSommet::SOMLireListeArrivants() {
 void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 {
 	if (LISSOMPartants.LISLireTaille() != 0) {
+		//On cherche si l'arc est dans la liste.
 		bool bEstDejaDansLaListe = false;
 		unsigned int uiBoucle = 0;
 		while (bEstDejaDansLaListe == false && uiBoucle < LISSOMPartants.LISLireTaille()) {
@@ -161,6 +162,7 @@ void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 		EXCErreur.EXCModifierValeur(ListeVide);
 		throw EXCErreur;
 	}
+	//On cherche si l'arc est dans la liste.
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
 	while (bEstDansLaListe == false && uiBoucle < LISSOMPartants.LISLireTaille()) {
@@ -191,6 +193,7 @@ void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 {
 	if (LISSOMArrivants.LISLireTaille() != 0) {
+		//On cherche si l'arc est dans la liste.
 		bool bEstDejaDansLaListe = false;
 		unsigned int uiBoucle = 0;
 		while ((bEstDejaDansLaListe == false) && (uiBoucle < LISSOMArrivants.LISLireTaille())) {
@@ -226,6 +229,7 @@ void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 		EXCErreur.EXCModifierValeur(ListeVide);
 		throw EXCErreur;
 	}
+	//On cherche si l'arc est dans la liste.
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
 	while (bEstDansLaListe == false && uiBoucle < LISSOMArrivants.LISLireTaille()) {

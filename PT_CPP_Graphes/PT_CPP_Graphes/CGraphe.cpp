@@ -78,6 +78,7 @@ void CGraphe::GRAAjouterSommet(unsigned int uiId)
 {
 	CSommet SOM1=*new CSommet(uiId);
 	if (LISGRASommet.LISLireTaille() != 0) {
+		//On cherche si le sommet est dans la liste.
 		bool bEstDejaDansLaListe = false;
 		unsigned int uiBoucle = 0;
 		while (bEstDejaDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) {
@@ -114,6 +115,7 @@ void CGraphe::GRASupprimerSommet(unsigned int uiId)
 		EXCErreur.EXCModifierValeur(ListeVide);
 		throw EXCErreur;
 	}
+	//On cherche si le sommet est dans la liste.
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
 	while (bEstDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) {
@@ -126,6 +128,7 @@ void CGraphe::GRASupprimerSommet(unsigned int uiId)
 		throw EXCErreur;
 	}
 	LISGRASommet.LISSupprimerElement(uiBoucle - 1);
+	//On supprime tous les arcs contenant le sommet comme destination.
 	if (LISGRASommet.LISLireTaille() != 0) {
 		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
 			bool bTrouveDest = false;
