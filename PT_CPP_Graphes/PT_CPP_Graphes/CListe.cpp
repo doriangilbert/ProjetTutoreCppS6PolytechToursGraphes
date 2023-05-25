@@ -87,7 +87,7 @@ template<class MTYPE> CListe<MTYPE>::CListe(unsigned int uiTaille)
 template<class MTYPE> CListe<MTYPE>::~CListe()
 {
 	uiLISTaille = 0;
-	delete pLISListe;
+	delete [] pLISListe;
 }
 
 /*****************************************************************************
