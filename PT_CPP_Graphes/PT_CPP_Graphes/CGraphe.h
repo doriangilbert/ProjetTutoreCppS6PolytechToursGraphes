@@ -24,8 +24,6 @@ class CGraphe
 		*******************************************************/
 		CGraphe();
 
-		//CGraphe(CGraphe &GRAParam);
-
 		/*******************************************************
 		***** CGRAPHE : Constructeur de confort de CGraphe *****
 		********************************************************
@@ -62,15 +60,16 @@ class CGraphe
 		***************************************************************************/
 		CListe<CSommet> GRALireListeSommet();
 
-		/*******************************************************************************
-		***** GRAAJOUTERSOMMET : Fonction permettant d'ajouter un sommet au graphe *****
-		********************************************************************************
-		***** Entrée : uiId, entier non signé, identifiant du sommet à ajouter     *****
-		***** Nécessite :                                                          *****
-		***** Sortie :                                                             *****
-		***** Entraine : LISGRASommet contient la liste des sommets du graphe,     *****
-		***** additionnée du sommet à ajouter                                      *****
-		*******************************************************************************/
+		/*******************************************************************************************
+		***** GRAAJOUTERSOMMET : Fonction permettant d'ajouter un sommet au graphe *****************
+		********************************************************************************************
+		***** Entrée : uiId, entier non signé, identifiant du sommet à ajouter                 *****
+		***** Nécessite :                                                                      *****
+		***** Sortie :                                                                         *****
+		***** Entraine : LISGRASommet contient la liste des sommets du graphe,                 *****
+		***** additionnée du sommet à ajouter OU											   *****
+		***** Exception EstDejaDansLaListe: Ne peut pas rajouter des elements déjà existants   *****
+		*******************************************************************************************/
 		void GRAAjouterSommet(unsigned int uiId);
 
 		/************************************************************************************
@@ -95,14 +94,39 @@ class CGraphe
 		***************************************************************************/
 		void GRAAfficher();
 
+		/************************************************************************************************
+		***** GRAAJOUETERArc : Fonction permettant d'ajouter un arc entre 2 sommet du graphe ************
+		*************************************************************************************************
+		***** Entrée : uiId, entier non signé, identifiant du sommet partants                       *****
+		***** uiIdDestination, entier non signé, identifiant du sommet Arrivants                    *****
+		***** Nécessite :                                                                           *****
+		***** Sortie :                                                                              *****
+		***** Entraine : Elle ajoute un arc entre les deux Sommet choisis OU                        *****
+		***** Exception NEstPasDansLaListe: Ne peut pas ajouter un arc de Sommet non existants      *****
+		************************************************************************************************/
 		void GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestination);
 
+		/************************************************************************************************
+		***** GRASUPPRIMERARC : Fonction permettant de supprimer un arc entre 2 sommet du graphe ********
+		*************************************************************************************************
+		***** Entrée : uiId, entier non signé, identifiant du sommet partants                       *****
+		***** uiIdDestination, entier non signé, identifiant du sommet Arrivants                    *****
+		***** Nécessite :                                                                           *****
+		***** Sortie :                                                                              *****
+		***** Entraine : Elle supprime un arc entre les deux Sommet choisis OU                      *****
+		***** Exception NEstPasDansLaListe: Ne peut pas supprimer un arc de Sommet non existants    *****
+		************************************************************************************************/
 		void GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestination);
 
+		/************************************************************************************************
+		***** GRAINVERSERGRAPHE : Fonction permettant d'inverser les arcs du graphe *********************
+		*************************************************************************************************
+		***** Entrée :																				*****
+		***** Nécessite :                                                                           *****
+		***** Sortie :                                                                              *****
+		***** Entraine : Elle supprime un arc entre les deux Sommet choisis                         *****
+		************************************************************************************************/
 		void GRAInverserGraphe();
-		
-		//CGraphe& operator=(CGraphe &GRAParam);
-
 };
 
 #endif

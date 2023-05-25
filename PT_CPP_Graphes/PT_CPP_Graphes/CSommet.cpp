@@ -16,10 +16,6 @@ CSommet::CSommet()
 	uiSOMId = 0;
 }
 
-/*CSommet::CSommet(CSommet &SOMParam)
-{
-
-}*/
 
 /*******************************************************
 ***** CSOMMET : Constructeur de confort de CSommet *****
@@ -36,6 +32,16 @@ CSommet::CSommet(unsigned int uiId)
 	uiSOMId = uiId;
 }
 
+/**********************************************************
+***** CSOMMET : Constructeur de recopie de CSommet ********
+***********************************************************
+***** Entrée : SOMParam, un objet CSommet			  *****
+***** du sommet                                       *****
+***** Nécessite :                                     *****
+***** Sortie :                                        *****
+***** Entraine : Le contructeur a initialisé          *****
+***** un objet CSommet étant la recopie de SOMParam   *****
+**********************************************************/
 CSommet::CSommet(CSommet& SOMParam) {
 
 	uiSOMId = SOMParam.SOMLireId();
@@ -51,11 +57,6 @@ CSommet::CSommet(CSommet& SOMParam) {
 	}
 	
 }
-
-/*CSommet::~CSommet()
-{
-
-}*/
 
 /*************************************************************
 ***** SOMLIREID : Accesseur direct en lecture de uiSOMId *****
@@ -119,7 +120,8 @@ CListe<CArc*> CSommet::SOMLireListeArrivants() {
 ***** Nécessite :                                                                    *****
 ***** Sortie :                                                                       *****
 ***** Entraine : LISSOMPartants contient la liste des sommets partants, additionnée  *****
-***** du sommet à ajouter                                                            *****
+***** du sommet à ajouter OU                                                         *****
+***** Exception EstDejaDansLaListe: Ne peut pas rajouter des elements déjà existants *****
 *****************************************************************************************/
 void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 {
@@ -131,7 +133,9 @@ void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 			uiBoucle++;
 		}
 		if (bEstDejaDansLaListe == true) {
-			//Exception....
+			CException EXCErreur;
+			EXCErreur.EXCModifierValeur(EstDejaDansLaListe);
+			throw EXCErreur;
 		}
 	}
 	CArc* ARCParam = new CArc(uiDestination);
@@ -146,12 +150,16 @@ void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 ***** Nécessite :                                                                         *****
 ***** Sortie :                                                                            *****
 ***** Entraine : LISSOMPartants contient la liste des sommets partants, soustraite du     *****
-***** sommet à supprimer                                                                  *****
+***** sommet à supprimer OU                                                               *****
+***** Exception NEstPasDansLaListe: Ne peut pas supprimer des élements déjà existants OU  *****
+***** Exception ListeVide: Ne peut pas supprimer un element d'une liste vide              *****
 **********************************************************************************************/
 void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 {
 	if (LISSOMPartants.LISLireTaille() == 0) {
-		//Exception...
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(ListeVide);
+		throw EXCErreur;
 	}
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
@@ -160,7 +168,9 @@ void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 		uiBoucle++;
 	}
 	if (bEstDansLaListe == false) {
-		//Exception....
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
+		throw EXCErreur;
 	}
 	CArc* pARCArc= LISSOMPartants.LISLireElement(uiBoucle-1);
 	LISSOMPartants.LISSupprimerElement(uiBoucle - 1);
@@ -176,6 +186,7 @@ void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 ***** Sortie :                                                                         *****
 ***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, additionnée  *****
 ***** du sommet à ajouter                                                              *****
+***** Exception EstDejaDansLaListe: Ne peut pas rajouter des elements déjà existants   *****
 *******************************************************************************************/
 void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 {
@@ -187,7 +198,9 @@ void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 			uiBoucle++;
 		}
 		if (bEstDejaDansLaListe == true) {
-			//Exception....
+			CException EXCErreur;
+			EXCErreur.EXCModifierValeur(EstDejaDansLaListe);
+			throw EXCErreur;
 		}
 	}
 	CArc* ARCParam = new CArc(uiDestination);
@@ -203,11 +216,15 @@ void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 ***** Sortie :                                                                              *****
 ***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, soustraite du     *****
 ***** sommet à supprimer                                                                    *****
+***** Exception NEstPasDansLaListe: Ne peut pas supprimer des élements déjà existants OU    *****
+***** Exception ListeVide: Ne peut pas supprimer un element d'une liste vide                *****
 ************************************************************************************************/
 void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 {
 	if (LISSOMArrivants.LISLireTaille() == 0) {
-		//Exception...
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(ListeVide);
+		throw EXCErreur;
 	}
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
@@ -216,7 +233,9 @@ void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 		uiBoucle++;
 	}
 	if (bEstDansLaListe == false) {
-		//Exception....
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
+		throw EXCErreur;
 	}
 	CArc* pARCArc = LISSOMArrivants.LISLireElement(uiBoucle-1);
 	LISSOMArrivants.LISSupprimerElement(uiBoucle-1);
@@ -250,6 +269,15 @@ void CSommet::SOMAfficher() {
 	}
 }
 
+
+/***************************************************************************
+***** OPERATOR= : Surcharge de l'opérateur =                           *****
+****************************************************************************
+***** Entrée : SOMParam, un objet CSommet                              *****
+***** Nécessite :                                                      *****
+***** Sortie :                                                         *****
+***** Entraine : Il a recopie l'objet SOMParam dans l'objet            *****
+***************************************************************************/
 CSommet CSommet::operator=(CSommet SOMParam)
 {
 	uiSOMId = SOMParam.SOMLireId();
@@ -262,6 +290,14 @@ CSommet CSommet::operator=(CSommet SOMParam)
 	return *this;
 }
 
+/***************************************************************************
+***** SOMINVERSERLISTESARC :Fonction permettant d'inverser les listes  *****
+****************************************************************************
+***** Entrée :														   *****
+***** Nécessite :                                                      *****
+***** Sortie :                                                         *****
+***** Entraine : Les listes sont inversés                              *****
+***************************************************************************/
 void CSommet::SOMInverserListesArc() {
 	CListe<CArc*> LISArc = LISSOMArrivants;
 	LISSOMArrivants = LISSOMPartants;

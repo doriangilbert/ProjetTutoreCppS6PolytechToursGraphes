@@ -4,7 +4,9 @@
 #include "CListe.h"
 #include "CArc.h"
 
-#define NULL 0;
+#define NULL 0
+#define EstDejaDansLaListe 3
+#define NEstPasDansLaListe 4
 
 class CSommet
 {
@@ -40,8 +42,6 @@ class CSommet
 		CSommet(unsigned int uiId);
 
 		CSommet(CSommet& SOMParam);
-		
-		//~CSommet();
 
 		/*************************************************************
 		***** SOMLIREID : Accesseur direct en lecture de uiSOMId *****
@@ -95,7 +95,8 @@ class CSommet
 		***** Nécessite :                                                                    *****
 		***** Sortie :                                                                       *****
 		***** Entraine : LISSOMPartants contient la liste des sommets partants, additionnée  *****
-		***** du sommet à ajouter                                                            *****
+		***** du sommet à ajouter OU                                                         *****
+		***** Exception EstDejaDansLaListe: Ne peut pas rajouter des elements déjà existants *****
 		*****************************************************************************************/
 		void SOMAjouterArcPartants(unsigned int uiDestination);
 
@@ -107,7 +108,9 @@ class CSommet
 		***** Nécessite :                                                                         *****
 		***** Sortie :                                                                            *****
 		***** Entraine : LISSOMPartants contient la liste des sommets partants, soustraite du     *****
-		***** sommet à supprimer                                                                  *****
+		***** sommet à supprimer OU                                                               *****
+		***** Exception NEstPasDansLaListe: Ne peut pas supprimer des élements déjà existants OU  *****
+		***** Exception ListeVide: Ne peut pas supprimer un element d'une liste vide              *****
 		**********************************************************************************************/
 		void SOMSupprimerArcPartants(unsigned int uiDestination);
 
@@ -120,6 +123,7 @@ class CSommet
 		***** Sortie :                                                                         *****
 		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, additionnée  *****
 		***** du sommet à ajouter                                                              *****
+		***** Exception EstDejaDansLaListe: Ne peut pas rajouter des elements déjà existants   *****
 		*******************************************************************************************/
 		void SOMAjouterArcArrivants(unsigned int uiDestination);
 
@@ -132,6 +136,8 @@ class CSommet
 		***** Sortie :                                                                              *****
 		***** Entraine : LISSOMArrivants contient la liste des sommets arrivants, soustraite du     *****
 		***** sommet à supprimer                                                                    *****
+		***** Exception NEstPasDansLaListe: Ne peut pas supprimer des élements déjà existants OU    *****
+		***** Exception ListeVide: Ne peut pas supprimer un element d'une liste vide                *****
 		************************************************************************************************/
 		void SOMSupprimerArcArrivants(unsigned int uiDestination);
 
@@ -146,8 +152,24 @@ class CSommet
 		***************************************************************************/
 		void SOMAfficher();
 
+		/***************************************************************************
+		***** OPERATOR= : Surcharge de l'opérateur =                           *****
+		****************************************************************************
+		***** Entrée : SOMParam, un objet CSommet                              *****
+		***** Nécessite :                                                      *****
+		***** Sortie :                                                         *****
+		***** Entraine : Il a recopie l'objet SOMParam dans l'objet            *****
+		***************************************************************************/
 		CSommet operator=(CSommet SOMParam);
 
+		/***************************************************************************
+		***** SOMINVERSERLISTESARC :Fonction permettant d'inverser les listes  *****
+		****************************************************************************
+		***** Entrée :														   *****
+		***** Nécessite :                                                      *****
+		***** Sortie :                                                         *****
+		***** Entraine : Les listes sont inversés                              *****
+		***************************************************************************/
 		void SOMInverserListesArc();
 
 };

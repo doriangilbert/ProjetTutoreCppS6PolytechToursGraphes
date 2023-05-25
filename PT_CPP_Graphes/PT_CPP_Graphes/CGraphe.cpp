@@ -36,10 +36,6 @@ CGraphe::CGraphe(bool bEstOriente)
 	bGRAEstOriente = bEstOriente;
 }
 
-/*CGraphe::~CGraphe()
-{
-
-}*/
 
 /****************************************************************************
 ***** GRALIREESTORIENTE : Accesseur direct en lecture de bGRAEstOriente *****
@@ -68,15 +64,16 @@ CListe<CSommet> CGraphe::GRALireListeSommet()
 	return LISGRASommet;
 }
 
-/*******************************************************************************
-***** GRAAJOUTERSOMMET : Fonction permettant d'ajouter un sommet au graphe *****
-********************************************************************************
-***** Entrée : uiId, entier non signé, identifiant du sommet à ajouter     *****
-***** Nécessite :                                                          *****
-***** Sortie :                                                             *****
-***** Entraine : LISGRASommet contient la liste des sommets du graphe,     *****
-***** additionnée du sommet à ajouter                                      *****
-*******************************************************************************/
+/*******************************************************************************************
+***** GRAAJOUTERSOMMET : Fonction permettant d'ajouter un sommet au graphe *****************
+********************************************************************************************
+***** Entrée : uiId, entier non signé, identifiant du sommet à ajouter                 *****
+***** Nécessite :                                                                      *****
+***** Sortie :                                                                         *****
+***** Entraine : LISGRASommet contient la liste des sommets du graphe,                 *****
+***** additionnée du sommet à ajouter OU											   *****
+***** Exception EstDejaDansLaListe: Ne peut pas rajouter des elements déjà existants   *****
+*******************************************************************************************/
 void CGraphe::GRAAjouterSommet(unsigned int uiId)
 {
 	CSommet SOM1=*new CSommet(uiId);
@@ -88,7 +85,9 @@ void CGraphe::GRAAjouterSommet(unsigned int uiId)
 			uiBoucle++;
 		}
 		if (bEstDejaDansLaListe == true) {
-			//Exception....
+			CException EXCErreur;
+			EXCErreur.EXCModifierValeur(EstDejaDansLaListe);
+			throw EXCErreur;
 		}
 		LISGRASommet.LISAjouterElement(SOM1);
 	}
@@ -97,19 +96,23 @@ void CGraphe::GRAAjouterSommet(unsigned int uiId)
 	}
 }
 
-/************************************************************************************
-***** GRASUPPRIMERSOMMET : Fonction permettant de supprimer un sommet du graphe *****
-*************************************************************************************
-***** Entrée : uiId, entier non signé, identifiant du sommet à supprimer        *****
-***** Nécessite :                                                               *****
-***** Sortie :                                                                  *****
-***** Entraine : LISGRASommet contient la liste des sommets du graphe,          *****
-***** soustraite du sommet à supprimer                                          *****
-************************************************************************************/
+/************************************************************************************************
+***** GRASUPPRIMERSOMMET : Fonction permettant de supprimer un sommet du graphe *****************
+*************************************************************************************************
+***** Entrée : uiId, entier non signé, identifiant du sommet à supprimer                    *****
+***** Nécessite :                                                                           *****
+***** Sortie :                                                                              *****
+***** Entraine : LISGRASommet contient la liste des sommets du graphe,                      *****
+***** soustraite du sommet à supprimer OU                                                   *****
+***** Exception NEstPasDansLaListe: Ne peut pas supprimer des élements déjà existants OU    *****
+***** Exception ListeVide: Ne peut pas supprimer un element d'une liste vide                *****
+************************************************************************************************/
 void CGraphe::GRASupprimerSommet(unsigned int uiId)
 {
 	if (LISGRASommet.LISLireTaille() == 0) {
-		//Exception...
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(ListeVide);
+		throw EXCErreur;
 	}
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
@@ -118,7 +121,9 @@ void CGraphe::GRASupprimerSommet(unsigned int uiId)
 		uiBoucle++;
 	}
 	if (bEstDansLaListe == false) {
-		//Exception....
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
+		throw EXCErreur;
 	}
 	LISGRASommet.LISSupprimerElement(uiBoucle - 1);
 	if (LISGRASommet.LISLireTaille() != 0) {
@@ -174,6 +179,16 @@ void CGraphe::GRAAfficher()
 
 }
 
+/************************************************************************************************
+***** GRAJOUTERARC  : Fonction permettant d'ajouter un arc entre 2 sommet du graphe *************
+*************************************************************************************************
+***** Entrée : uiId, entier non signé, identifiant du sommet partants                       *****
+***** uiIdDestination, entier non signé, identifiant du sommet Arrivants                    *****
+***** Nécessite :                                                                           *****
+***** Sortie :                                                                              *****
+***** Entraine : Elle ajoute un arc entre les deux Sommet choisis OU                        *****
+***** Exception NEstPasDansLaListe: Ne peut pas ajouter un arc de Sommet non existants      ***** 
+************************************************************************************************/
 void CGraphe::GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestination) {
 	unsigned int uiPositionSommet = 0;
 	unsigned int uiPositionDestination = 0;
@@ -196,7 +211,9 @@ void CGraphe::GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestinatio
 		uiBoucle++;
 	}
 	if (bTrouveSommet == false || bTrouveDestination == false) {
-		//Exception....
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
+		throw EXCErreur;
 	}
 	else {
 		LISGRASommet.LISLireElement(uiPositionSommet).SOMAjouterArcPartants(uiIdDestination);
@@ -207,6 +224,17 @@ void CGraphe::GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestinatio
 		}
 	}
 }
+
+/************************************************************************************************
+***** GRASUPPRIMERARC : Fonction permettant de supprimer un arc entre 2 sommet du graphe ********
+*************************************************************************************************
+***** Entrée : uiId, entier non signé, identifiant du sommet partants                       *****
+***** uiIdDestination, entier non signé, identifiant du sommet Arrivants                    *****
+***** Nécessite :                                                                           *****
+***** Sortie :                                                                              *****
+***** Entraine : Elle supprime un arc entre les deux Sommet choisis OU                      *****
+***** Exception NEstPasDansLaListe: Ne peut pas supprimer un arc de Sommet non existants    *****
+************************************************************************************************/
 void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestination) {
 	unsigned int uiPositionSommet = 0;
 	unsigned int uiPositionDestination = 0;
@@ -229,7 +257,9 @@ void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestinat
 		uiBoucle++;
 	}
 	if (bTrouveSommet == false || bTrouveDestination == false) {
-		//Exception....
+		CException EXCErreur;
+		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
+		throw EXCErreur;
 	}
 	else {
 		LISGRASommet.LISLireElement(uiPositionSommet).SOMSupprimerArcPartants(uiIdDestination);
@@ -241,13 +271,16 @@ void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestinat
 	}
 }
 
+/************************************************************************************************
+***** GRAINVERSERGRAPHE : Fonction permettant d'inverser les arcs du graphe *********************
+*************************************************************************************************
+***** Entrée :																				*****
+***** Nécessite :                                                                           *****
+***** Sortie :                                                                              *****
+***** Entraine : Elle supprime un arc entre les deux Sommet choisis                         *****
+************************************************************************************************/
 void CGraphe::GRAInverserGraphe() {
 	for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
 		LISGRASommet.LISLireElement(uiBoucle).SOMInverserListesArc();
 	}
 }
-/*CGraphe& CGraphe::operator=(CGraphe& GRAParam)
-{
-	CGraphe TODO;
-	return TODO;
-}*/
