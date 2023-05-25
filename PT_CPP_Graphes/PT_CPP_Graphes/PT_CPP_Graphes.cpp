@@ -20,8 +20,8 @@ int main(int argc, char* argv[])
 			CLecteur* LECLecteur = new CLecteur(argv[1]);
 			CGraphe GRAGraphe = LECLecteur->LECLireFichierGraphe();
 			GRAGraphe.GRAAfficher();
-			GRAGraphe.GRAInverserGraphe();
-			GRAGraphe.GRAAfficher();
+			CGraphe GRAGrapheInv = GRAGraphe.GRAInverserGraphe();
+			GRAGrapheInv.GRAAfficher();
 		}
 	}
 	catch (CException EXCErreur) {

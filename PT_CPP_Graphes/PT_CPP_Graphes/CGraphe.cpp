@@ -59,7 +59,7 @@ bool CGraphe::GRALireEstOriente()
 ***** LISGRASommet                                                     *****
 ***** Entraine : GRALireListeSommet() = LISGRASommet                   *****
 ***************************************************************************/
-CListe<CSommet> CGraphe::GRALireListeSommet()
+CListe<CSommet>& CGraphe::GRALireListeSommet()
 {
 	return LISGRASommet;
 }
@@ -280,11 +280,13 @@ void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestinat
 *************************************************************************************************
 ***** Entrée :																				*****
 ***** Nécessite :                                                                           *****
-***** Sortie :                                                                              *****
+***** Sortie :  GRATemp, objet CGraphe etant la recopie du Sommet avec les arc inversé      *****
 ***** Entraine : Elle supprime un arc entre les deux Sommet choisis                         *****
 ************************************************************************************************/
-void CGraphe::GRAInverserGraphe() {
-	for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
-		LISGRASommet.LISLireElement(uiBoucle).SOMInverserListesArc();
+CGraphe& CGraphe::GRAInverserGraphe() {
+	CGraphe* GRATemp = new CGraphe(*this);	
+	for (unsigned int uiBoucle = 0; uiBoucle < GRATemp->GRALireListeSommet().LISLireTaille(); uiBoucle++) {
+		GRATemp->GRALireListeSommet().LISLireElement(uiBoucle).SOMInverserListesArc();
 	}
+	return *GRATemp;
 }

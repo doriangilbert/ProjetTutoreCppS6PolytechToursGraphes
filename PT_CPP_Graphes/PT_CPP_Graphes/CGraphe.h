@@ -37,7 +37,6 @@ class CGraphe
 		*******************************************************/
 		CGraphe(bool bEstOriente);
 
-		//~CGraphe();
 
 		/****************************************************************************
 		***** GRALIREESTORIENTE : Accesseur direct en lecture de bGRAEstOriente *****
@@ -58,7 +57,7 @@ class CGraphe
 		***** LISGRASommet                                                     *****
 		***** Entraine : GRALireListeSommet() = LISGRASommet                   *****
 		***************************************************************************/
-		CListe<CSommet> GRALireListeSommet();
+		CListe<CSommet>& GRALireListeSommet();
 
 		/*******************************************************************************************
 		***** GRAAJOUTERSOMMET : Fonction permettant d'ajouter un sommet au graphe *****************
@@ -126,7 +125,8 @@ class CGraphe
 		***** Sortie :                                                                              *****
 		***** Entraine : Elle supprime un arc entre les deux Sommet choisis                         *****
 		************************************************************************************************/
-		void GRAInverserGraphe();
+		CGraphe& GRAInverserGraphe();
+
 };
 
 #endif
