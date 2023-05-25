@@ -6,8 +6,8 @@
 
 #define NULL 0
 
-#define EstDejaDansLaListe 3
-#define NEstPasDansLaListe 4
+#define EstDejaDansLaListe 31
+#define NEstPasDansLaListe 32
 
 class CSommet
 {

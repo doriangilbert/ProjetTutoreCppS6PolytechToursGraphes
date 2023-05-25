@@ -6,8 +6,8 @@
 #include <iostream>
 using namespace std;
 
-#define ListeVide 1
-#define DepassementdeTaille 2
+#define ListeVide 11
+#define DepassementdeTaille 12
 
 template<class MTYPE> class CListe
 {

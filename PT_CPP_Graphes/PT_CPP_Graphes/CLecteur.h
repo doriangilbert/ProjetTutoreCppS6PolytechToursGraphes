@@ -11,9 +11,9 @@ using namespace std;
 
 #define NULL 0;
 
-#define NomFichierManquant 55
-#define EchecOuvertureFichier 56
-#define FormatFichierInvalide 57
+#define NomFichierManquant 21
+#define EchecOuvertureFichier 22
+#define FormatFichierInvalide 23
 
 class CLecteur
 {
