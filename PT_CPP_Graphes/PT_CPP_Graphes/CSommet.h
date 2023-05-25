@@ -5,6 +5,7 @@
 #include "CArc.h"
 
 #define NULL 0
+
 #define EstDejaDansLaListe 3
 #define NEstPasDansLaListe 4
 
@@ -14,7 +15,6 @@ class CSommet
 		unsigned int uiSOMId; //Entier non signé, Identifiant du sommet
 		CListe<CArc*> LISSOMPartants; //Liste des arcs partants du sommet
 		CListe<CArc*> LISSOMArrivants; //Liste des arcs arrivants au sommet
-
 
 	public:
 		/*******************************************************
@@ -28,7 +28,6 @@ class CSommet
 		*******************************************************/
 		CSommet();
 
-
 		/*******************************************************
 		***** CSOMMET : Constructeur de confort de CSommet *****
 		********************************************************
@@ -41,6 +40,16 @@ class CSommet
 		*******************************************************/
 		CSommet(unsigned int uiId);
 
+		/**********************************************************
+		***** CSOMMET : Constructeur de recopie de CSommet ********
+		***********************************************************
+		***** Entrée : SOMParam, un objet CSommet			  *****
+		***** du sommet                                       *****
+		***** Nécessite :                                     *****
+		***** Sortie :                                        *****
+		***** Entraine : Le contructeur a initialisé          *****
+		***** un objet CSommet étant la recopie de SOMParam   *****
+		**********************************************************/
 		CSommet(CSommet& SOMParam);
 
 		/*************************************************************

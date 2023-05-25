@@ -37,7 +37,8 @@ template<class MTYPE> CListe<MTYPE>::CListe(CListe<MTYPE> &LISParam)
 		uiLISTaille = 0;
 		pLISListe = nullptr;
 	}
-	else {
+	else 
+	{
 		uiLISTaille = LISParam.LISLireTaille();
 		pLISListe = new MTYPE[uiLISTaille];
 		for (unsigned int uiBoucle = 0; uiBoucle < uiLISTaille; uiBoucle++)
@@ -45,7 +46,6 @@ template<class MTYPE> CListe<MTYPE>::CListe(CListe<MTYPE> &LISParam)
 			pLISListe[uiBoucle] = LISParam.LISLireElement(uiBoucle);
 		}
 	}
-
 }
 
 /*******************************************************************
@@ -246,7 +246,8 @@ template<class MTYPE> CListe<MTYPE>& CListe<MTYPE>::operator=(CListe<MTYPE> LISP
 		uiLISTaille = 0;
 		pLISListe = nullptr;
 	}
-	else {
+	else 
+	{
 		uiLISTaille = uiTaille;
 		pLISListe = new MTYPE[uiLISTaille];
 		for (unsigned int uiBoucle = 0; uiBoucle < uiLISTaille; uiBoucle++)

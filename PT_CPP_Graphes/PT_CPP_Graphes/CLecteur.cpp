@@ -195,7 +195,8 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			EXCErreur.EXCModifierValeur(FormatFichierInvalide);
 			throw EXCErreur;
 		}
-		else {
+		else 
+		{
 			uiNBArcs = iNBArcs;
 		}
 	}
@@ -256,7 +257,8 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 				EXCErreur.EXCModifierValeur(FormatFichierInvalide);
 				throw EXCErreur;
 			}
-			else {
+			else 
+			{
 				uiNumero = iNumero;
 			}
 		}
@@ -341,7 +343,8 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 					EXCErreur.EXCModifierValeur(FormatFichierInvalide);
 					throw EXCErreur;
 				}
-				else {
+				else 
+				{
 					uiNumeroSommetDepart = iNumeroSommetDepart;
 				}
 			}
@@ -351,7 +354,8 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 			{
 				pcParcoursChaine = strchr(pcParcoursChaine, ',');
 				pcParcoursChaine++;
-				while (strchr(pcParcoursChaine, ' ')) {
+				while (strchr(pcParcoursChaine, ' ')) 
+				{
 					pcParcoursChaine = strchr(pcParcoursChaine, ' ');
 					pcParcoursChaine++;
 				}
@@ -379,7 +383,8 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 					EXCErreur.EXCModifierValeur(FormatFichierInvalide);
 					throw EXCErreur;
 				}
-				else {
+				else 
+				{
 					uiNumeroSommetArrivee = iNumeroSommetArrivee;
 				}
 			}
@@ -395,7 +400,7 @@ CGraphe& CLecteur::LECLireFichierGraphe()
 				pcParcoursChaine = strchr(pcParcoursChaine, '\n');
 			}
 			
-			//TODO : Ajouter Arc
+			//Ajouter Arc
 			GRAGraphe->GRAAjouterArc(uiNumeroSommetDepart, uiNumeroSommetArrivee);
 		}
 	}

@@ -15,11 +15,6 @@ CGraphe::CGraphe()
 	bGRAEstOriente = true;
 }
 
-/*CGraphe::CGraphe(CGraphe& GRAParam)
-{
-
-}*/
-
 /*******************************************************
 ***** CGRAPHE : Constructeur de confort de CGraphe *****
 ********************************************************
@@ -35,7 +30,6 @@ CGraphe::CGraphe(bool bEstOriente)
 {
 	bGRAEstOriente = bEstOriente;
 }
-
 
 /****************************************************************************
 ***** GRALIREESTORIENTE : Accesseur direct en lecture de bGRAEstOriente *****
@@ -77,22 +71,26 @@ CListe<CSommet>& CGraphe::GRALireListeSommet()
 void CGraphe::GRAAjouterSommet(unsigned int uiId)
 {
 	CSommet SOM1=*new CSommet(uiId);
-	if (LISGRASommet.LISLireTaille() != 0) {
+	if (LISGRASommet.LISLireTaille() != 0) 
+	{
 		//On cherche si le sommet est dans la liste.
 		bool bEstDejaDansLaListe = false;
 		unsigned int uiBoucle = 0;
-		while (bEstDejaDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) {
+		while (bEstDejaDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) 
+		{
 			bEstDejaDansLaListe = (uiId == LISGRASommet.LISLireElement(uiBoucle).SOMLireId());
 			uiBoucle++;
 		}
-		if (bEstDejaDansLaListe == true) {
+		if (bEstDejaDansLaListe == true) 
+		{
 			CException EXCErreur;
 			EXCErreur.EXCModifierValeur(EstDejaDansLaListe);
 			throw EXCErreur;
 		}
 		LISGRASommet.LISAjouterElement(SOM1);
 	}
-	else {
+	else 
+	{
 		LISGRASommet.LISAjouterElement(SOM1);
 	}
 }
@@ -110,7 +108,8 @@ void CGraphe::GRAAjouterSommet(unsigned int uiId)
 ************************************************************************************************/
 void CGraphe::GRASupprimerSommet(unsigned int uiId)
 {
-	if (LISGRASommet.LISLireTaille() == 0) {
+	if (LISGRASommet.LISLireTaille() == 0) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(ListeVide);
 		throw EXCErreur;
@@ -118,36 +117,46 @@ void CGraphe::GRASupprimerSommet(unsigned int uiId)
 	//On cherche si le sommet est dans la liste.
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
-	while (bEstDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) {
+	while (bEstDansLaListe == false && uiBoucle < LISGRASommet.LISLireTaille()) 
+	{
 		bEstDansLaListe = (uiId == LISGRASommet.LISLireElement(uiBoucle).SOMLireId());
 		uiBoucle++;
 	}
-	if (bEstDansLaListe == false) {
+	if (bEstDansLaListe == false) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
 		throw EXCErreur;
 	}
 	LISGRASommet.LISSupprimerElement(uiBoucle - 1);
 	//On supprime tous les arcs contenant le sommet comme destination.
-	if (LISGRASommet.LISLireTaille() != 0) {
-		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
+	if (LISGRASommet.LISLireTaille() != 0) 
+	{
+		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) 
+		{
 			bool bTrouveDest = false;
-			for (unsigned int uiBoucle2 = 0; uiBoucle2 < LISGRASommet.LISLireElement(uiBoucle).SOMLireListeArrivants().LISLireTaille();uiBoucle2++) {
-				if (LISGRASommet.LISLireElement(uiBoucle).SOMLireListeArrivants().LISLireElement(uiBoucle2)->ARCLireDestination() == uiId) {
+			for (unsigned int uiBoucle2 = 0; uiBoucle2 < LISGRASommet.LISLireElement(uiBoucle).SOMLireListeArrivants().LISLireTaille();uiBoucle2++) 
+			{
+				if (LISGRASommet.LISLireElement(uiBoucle).SOMLireListeArrivants().LISLireElement(uiBoucle2)->ARCLireDestination() == uiId) 
+				{
 					bTrouveDest = true;
 				}
 			}
-			if (bTrouveDest == true) {
+			if (bTrouveDest == true) 
+			{
 				LISGRASommet.LISLireElement(uiBoucle).SOMSupprimerArcArrivants(uiId);
 			}
 			bTrouveDest = false;
-			for( unsigned int uiBoucle2=0;uiBoucle2 < LISGRASommet.LISLireElement(uiBoucle).SOMLireListePartants().LISLireTaille() ; uiBoucle2++) {
-				if (LISGRASommet.LISLireElement(uiBoucle).SOMLireListePartants().LISLireElement(uiBoucle2)->ARCLireDestination() == uiId) {
+			for( unsigned int uiBoucle2=0;uiBoucle2 < LISGRASommet.LISLireElement(uiBoucle).SOMLireListePartants().LISLireTaille() ; uiBoucle2++) 
+			{
+				if (LISGRASommet.LISLireElement(uiBoucle).SOMLireListePartants().LISLireElement(uiBoucle2)->ARCLireDestination() == uiId) 
+				{
 					bTrouveDest = true;
 
 				}
 			}
-			if (bTrouveDest == true) {
+			if (bTrouveDest == true) 
+			{
 				LISGRASommet.LISLireElement(uiBoucle).SOMSupprimerArcPartants(uiId);
 			}
 		}
@@ -165,22 +174,25 @@ void CGraphe::GRASupprimerSommet(unsigned int uiId)
 ***************************************************************************/
 void CGraphe::GRAAfficher()
 {
-	if (bGRAEstOriente) {
+	if (bGRAEstOriente) 
+	{
 		cout << "Le graphe est oriente \n";
 	}
-	else {
+	else 
+	{
 		cout << "Le graphe n'est pas oriente \n";
 	}
-	if (LISGRASommet.LISLireTaille() != 0) {
-		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
-			
+	if (LISGRASommet.LISLireTaille() != 0) 
+	{
+		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) 
+		{
 			LISGRASommet.LISLireElement(uiBoucle).SOMAfficher();
 		}
 	}
-	else {
-		cout << "Le Graphe est vide\n";
+	else 
+	{
+		cout << "Le graphe est vide\n";
 	}
-
 }
 
 /************************************************************************************************
@@ -193,36 +205,45 @@ void CGraphe::GRAAfficher()
 ***** Entraine : Elle ajoute un arc entre les deux Sommet choisis OU                        *****
 ***** Exception NEstPasDansLaListe: Ne peut pas ajouter un arc de Sommet non existants      ***** 
 ************************************************************************************************/
-void CGraphe::GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestination) {
+void CGraphe::GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestination) 
+{
 	unsigned int uiPositionSommet = 0;
 	unsigned int uiPositionDestination = 0;
 	bool bTrouveSommet = false;
 	bool bTrouveDestination = false;
 	unsigned int uiBoucle = 0;
-	while ((bTrouveSommet == false || bTrouveDestination == false) && uiBoucle < LISGRASommet.LISLireTaille()) {
-		if (bTrouveSommet == false) {
+	while ((bTrouveSommet == false || bTrouveDestination == false) && uiBoucle < LISGRASommet.LISLireTaille()) 
+	{
+		if (bTrouveSommet == false) 
+		{
 			bTrouveSommet = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdSommet;
-			if (bTrouveSommet == true) {
+			if (bTrouveSommet == true) 
+			{
 				uiPositionSommet = uiBoucle;
 			}
 		}
-		if (bTrouveDestination == false) {
+		if (bTrouveDestination == false) 
+		{
 			bTrouveDestination = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdDestination;
-			if (bTrouveDestination == true) {
+			if (bTrouveDestination == true) 
+			{
 				uiPositionDestination = uiBoucle;
 			}
 		}
 		uiBoucle++;
 	}
-	if (bTrouveSommet == false || bTrouveDestination == false) {
+	if (bTrouveSommet == false || bTrouveDestination == false) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
 		throw EXCErreur;
 	}
-	else {
+	else 
+	{
 		LISGRASommet.LISLireElement(uiPositionSommet).SOMAjouterArcPartants(uiIdDestination);
 		LISGRASommet.LISLireElement(uiPositionDestination).SOMAjouterArcArrivants(uiIdSommet);
-		if (!bGRAEstOriente) {
+		if (!bGRAEstOriente) 
+		{
 			LISGRASommet.LISLireElement(uiPositionSommet).SOMAjouterArcArrivants(uiIdDestination);
 			LISGRASommet.LISLireElement(uiPositionDestination).SOMAjouterArcPartants(uiIdSommet);
 		}
@@ -239,36 +260,45 @@ void CGraphe::GRAAjouterArc(unsigned int uiIdSommet, unsigned int uiIdDestinatio
 ***** Entraine : Elle supprime un arc entre les deux Sommet choisis OU                      *****
 ***** Exception NEstPasDansLaListe: Ne peut pas supprimer un arc de Sommet non existants    *****
 ************************************************************************************************/
-void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestination) {
+void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestination) 
+{
 	unsigned int uiPositionSommet = 0;
 	unsigned int uiPositionDestination = 0;
 	bool bTrouveSommet = false;
 	bool bTrouveDestination = false;
 	unsigned int uiBoucle = 0;
-	while ((bTrouveSommet == false || bTrouveDestination == false) && uiBoucle < LISGRASommet.LISLireTaille()) {
-		if (bTrouveSommet == false) {
+	while ((bTrouveSommet == false || bTrouveDestination == false) && uiBoucle < LISGRASommet.LISLireTaille()) 
+	{
+		if (bTrouveSommet == false) 
+		{
 			bTrouveSommet = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdSommet;
-			if (bTrouveSommet == true) {
+			if (bTrouveSommet == true) 
+			{
 				uiPositionSommet = uiBoucle;
 			}
 		}
-		if (bTrouveDestination == false) {
+		if (bTrouveDestination == false) 
+		{
 			bTrouveDestination = LISGRASommet.LISLireElement(uiBoucle).SOMLireId() == uiIdDestination;
-			if (bTrouveDestination == true) {
+			if (bTrouveDestination == true) 
+			{
 				uiPositionDestination = uiBoucle;
 			}
 		}
 		uiBoucle++;
 	}
-	if (bTrouveSommet == false || bTrouveDestination == false) {
+	if (bTrouveSommet == false || bTrouveDestination == false) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
 		throw EXCErreur;
 	}
-	else {
+	else 
+	{
 		LISGRASommet.LISLireElement(uiPositionSommet).SOMSupprimerArcPartants(uiIdDestination);
 		LISGRASommet.LISLireElement(uiPositionDestination).SOMSupprimerArcArrivants(uiIdSommet);
-		if (!bGRAEstOriente) {
+		if (!bGRAEstOriente) 
+		{
 			LISGRASommet.LISLireElement(uiPositionSommet).SOMSupprimerArcArrivants(uiIdDestination);
 			LISGRASommet.LISLireElement(uiPositionDestination).SOMSupprimerArcPartants(uiIdSommet);
 		}
@@ -283,9 +313,11 @@ void CGraphe::GRASupprimerArc(unsigned int uiIdSommet, unsigned int uiIdDestinat
 ***** Sortie :  GRATemp, objet CGraphe etant la recopie du Sommet avec les arc inversé      *****
 ***** Entraine : Elle supprime un arc entre les deux Sommet choisis                         *****
 ************************************************************************************************/
-CGraphe& CGraphe::GRAInverserGraphe() {
+CGraphe& CGraphe::GRAInverserGraphe() 
+{
 	CGraphe* GRATemp = new CGraphe(*this);	
-	for (unsigned int uiBoucle = 0; uiBoucle < GRATemp->GRALireListeSommet().LISLireTaille(); uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle < GRATemp->GRALireListeSommet().LISLireTaille(); uiBoucle++) 
+	{
 		GRATemp->GRALireListeSommet().LISLireElement(uiBoucle).SOMInverserListesArc();
 	}
 	return *GRATemp;

@@ -16,7 +16,6 @@ CSommet::CSommet()
 	uiSOMId = 0;
 }
 
-
 /*******************************************************
 ***** CSOMMET : Constructeur de confort de CSommet *****
 ********************************************************
@@ -45,17 +44,20 @@ CSommet::CSommet(unsigned int uiId)
 CSommet::CSommet(CSommet& SOMParam) {
 
 	uiSOMId = SOMParam.SOMLireId();
-	if (SOMParam.SOMLireListeArrivants().LISLireTaille() != 0) {
-		for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) {
+	if (SOMParam.SOMLireListeArrivants().LISLireTaille() != 0) 
+	{
+		for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) 
+		{
 		LISSOMArrivants.LISAjouterElement(new CArc(SOMParam.SOMLireListeArrivants().LISLireElement(uiBoucle)->ARCLireDestination()));
 		}
 	}
-	if (SOMParam.SOMLireListePartants().LISLireTaille() != 0) {
-		for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) {
+	if (SOMParam.SOMLireListePartants().LISLireTaille() != 0) 
+	{
+		for (unsigned int uiBoucle = 0; uiBoucle < SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) 
+		{
 			LISSOMPartants.LISAjouterElement(new CArc(SOMParam.SOMLireListePartants().LISLireElement(uiBoucle)->ARCLireDestination()));
 		}
 	}
-	
 }
 
 /*************************************************************
@@ -95,7 +97,8 @@ void CSommet::SOMModifierId(unsigned int uiId)
 ***** LISSOMPartants                                                       *****
 ***** Entraine : SOMLireListePartants() = LISSOMPartants                   *****
 *******************************************************************************/
-CListe<CArc*> CSommet::SOMLireListePartants() {
+CListe<CArc*> CSommet::SOMLireListePartants() 
+{
 	return LISSOMPartants;
 }
 
@@ -108,7 +111,8 @@ CListe<CArc*> CSommet::SOMLireListePartants() {
 ***** LISSOMArrivants                                                        *****
 ***** Entraine : SOMLireListeArrivants() = LISSOMArrivants                   *****
 *********************************************************************************/
-CListe<CArc*> CSommet::SOMLireListeArrivants() {
+CListe<CArc*> CSommet::SOMLireListeArrivants() 
+{
 	return LISSOMArrivants;
 }
 
@@ -125,15 +129,18 @@ CListe<CArc*> CSommet::SOMLireListeArrivants() {
 *****************************************************************************************/
 void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 {
-	if (LISSOMPartants.LISLireTaille() != 0) {
+	if (LISSOMPartants.LISLireTaille() != 0) 
+	{
 		//On cherche si l'arc est dans la liste.
 		bool bEstDejaDansLaListe = false;
 		unsigned int uiBoucle = 0;
-		while (bEstDejaDansLaListe == false && uiBoucle < LISSOMPartants.LISLireTaille()) {
+		while (bEstDejaDansLaListe == false && uiBoucle < LISSOMPartants.LISLireTaille()) 
+		{
 			bEstDejaDansLaListe = (uiDestination == LISSOMPartants.LISLireElement(uiBoucle)->ARCLireDestination());
 			uiBoucle++;
 		}
-		if (bEstDejaDansLaListe == true) {
+		if (bEstDejaDansLaListe == true) 
+		{
 			CException EXCErreur;
 			EXCErreur.EXCModifierValeur(EstDejaDansLaListe);
 			throw EXCErreur;
@@ -157,7 +164,8 @@ void CSommet::SOMAjouterArcPartants(unsigned int uiDestination)
 **********************************************************************************************/
 void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 {
-	if (LISSOMPartants.LISLireTaille() == 0) {
+	if (LISSOMPartants.LISLireTaille() == 0) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(ListeVide);
 		throw EXCErreur;
@@ -165,11 +173,13 @@ void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 	//On cherche si l'arc est dans la liste.
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
-	while (bEstDansLaListe == false && uiBoucle < LISSOMPartants.LISLireTaille()) {
+	while (bEstDansLaListe == false && uiBoucle < LISSOMPartants.LISLireTaille()) 
+	{
 		bEstDansLaListe = (uiDestination == LISSOMPartants.LISLireElement(uiBoucle)->ARCLireDestination());
 		uiBoucle++;
 	}
-	if (bEstDansLaListe == false) {
+	if (bEstDansLaListe == false) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
 		throw EXCErreur;
@@ -192,15 +202,18 @@ void CSommet::SOMSupprimerArcPartants(unsigned int uiDestination)
 *******************************************************************************************/
 void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 {
-	if (LISSOMArrivants.LISLireTaille() != 0) {
+	if (LISSOMArrivants.LISLireTaille() != 0) 
+	{
 		//On cherche si l'arc est dans la liste.
 		bool bEstDejaDansLaListe = false;
 		unsigned int uiBoucle = 0;
-		while ((bEstDejaDansLaListe == false) && (uiBoucle < LISSOMArrivants.LISLireTaille())) {
+		while ((bEstDejaDansLaListe == false) && (uiBoucle < LISSOMArrivants.LISLireTaille())) 
+		{
 			bEstDejaDansLaListe = (uiDestination == LISSOMArrivants.LISLireElement(uiBoucle)->ARCLireDestination());
 			uiBoucle++;
 		}
-		if (bEstDejaDansLaListe == true) {
+		if (bEstDejaDansLaListe == true) 
+		{
 			CException EXCErreur;
 			EXCErreur.EXCModifierValeur(EstDejaDansLaListe);
 			throw EXCErreur;
@@ -224,7 +237,8 @@ void CSommet::SOMAjouterArcArrivants(unsigned int uiDestination)
 ************************************************************************************************/
 void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 {
-	if (LISSOMArrivants.LISLireTaille() == 0) {
+	if (LISSOMArrivants.LISLireTaille() == 0) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(ListeVide);
 		throw EXCErreur;
@@ -232,11 +246,13 @@ void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 	//On cherche si l'arc est dans la liste.
 	bool bEstDansLaListe = false;
 	unsigned int uiBoucle = 0;
-	while (bEstDansLaListe == false && uiBoucle < LISSOMArrivants.LISLireTaille()) {
+	while (bEstDansLaListe == false && uiBoucle < LISSOMArrivants.LISLireTaille()) 
+	{
 		bEstDansLaListe = (uiDestination == LISSOMArrivants.LISLireElement(uiBoucle)->ARCLireDestination());
 		uiBoucle++;
 	}
-	if (bEstDansLaListe == false) {
+	if (bEstDansLaListe == false) 
+	{
 		CException EXCErreur;
 		EXCErreur.EXCModifierValeur(NEstPasDansLaListe);
 		throw EXCErreur;
@@ -256,29 +272,34 @@ void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 ***** l'écran                                                          *****
 ***************************************************************************/
 void CSommet::SOMAfficher() {
-	cout << "uiSOMID = " << uiSOMId << "\n";
-	if (LISSOMArrivants.LISLireTaille() != 0) {
+	cout << "Id du sommet : " << uiSOMId << "\n";
+	if (LISSOMArrivants.LISLireTaille() != 0) 
+	{
 		cout << "Liste des destinations arrivantes est \n";
-		for (unsigned int uiBoucle = 0; uiBoucle < LISSOMArrivants.LISLireTaille(); uiBoucle++) {
+		for (unsigned int uiBoucle = 0; uiBoucle < LISSOMArrivants.LISLireTaille(); uiBoucle++) 
+		{
 			cout << LISSOMArrivants.LISLireElement(uiBoucle)->ARCLireDestination() << " ";
 		}
 		cout << "\n";
 	}
-	else {
+	else 
+	{
 		cout << "Liste des destinations arrivantes est vide\n";
 	}
-	if (LISSOMPartants.LISLireTaille() != 0) {
+	if (LISSOMPartants.LISLireTaille() != 0) 
+	{
 		cout << "Liste des destinations partantes est \n";
-		for (unsigned int uiBoucle = 0; uiBoucle < LISSOMPartants.LISLireTaille(); uiBoucle++) {
+		for (unsigned int uiBoucle = 0; uiBoucle < LISSOMPartants.LISLireTaille(); uiBoucle++) 
+		{
 			cout << LISSOMPartants.LISLireElement(uiBoucle)->ARCLireDestination() << " ";
 		}
 		cout << "\n";
 	}
-	else {
+	else 
+	{
 		cout << "Liste des destinations partantes est vide \n";
 	}
 }
-
 
 /***************************************************************************
 ***** OPERATOR= : Surcharge de l'opérateur =                           *****
@@ -291,10 +312,12 @@ void CSommet::SOMAfficher() {
 CSommet CSommet::operator=(CSommet SOMParam)
 {
 	uiSOMId = SOMParam.SOMLireId();
-	for (unsigned int uiBoucle = 0; uiBoucle<SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle<SOMParam.SOMLireListeArrivants().LISLireTaille(); uiBoucle++) 
+	{
 		LISSOMArrivants.LISAjouterElement(new CArc(SOMParam.SOMLireListeArrivants().LISLireElement(uiBoucle)->ARCLireDestination()));
 	}
-	for (unsigned int uiBoucle = 0; uiBoucle<SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) {
+	for (unsigned int uiBoucle = 0; uiBoucle<SOMParam.SOMLireListePartants().LISLireTaille(); uiBoucle++) 
+	{
 		LISSOMPartants.LISAjouterElement(new CArc(SOMParam.SOMLireListePartants().LISLireElement(uiBoucle)->ARCLireDestination()));
 	}
 	return *this;
@@ -308,7 +331,8 @@ CSommet CSommet::operator=(CSommet SOMParam)
 ***** Sortie :                                                         *****
 ***** Entraine : Les listes sont inversés                              *****
 ***************************************************************************/
-void CSommet::SOMInverserListesArc() {
+void CSommet::SOMInverserListesArc() 
+{
 	CListe<CArc*> LISArc = LISSOMArrivants;
 	LISSOMArrivants = LISSOMPartants;
 	LISSOMPartants = LISArc;
