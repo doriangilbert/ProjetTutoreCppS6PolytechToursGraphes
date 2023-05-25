@@ -53,6 +53,17 @@ template<class MTYPE> class CListe
 		***** EXCEPTION ListeVide: On ne crée pas une liste vide       *****
 		*******************************************************************/
 		CListe<MTYPE>(unsigned int uiTaille);
+
+		/*******************************************************************
+		***** ~CLISTE<MTYPE> : Destructeur de CLISTE<MTYPE> ****************
+		********************************************************************
+		***** Entrée :												   *****
+		***** la liste                                                 *****
+		***** Nécessite :                                              *****
+		***** Sortie :                                                 *****
+		***** Entraine : Le destucteur désalloue le tableau            *****
+		*******************************************************************/
+		~CListe<MTYPE>();
 		
 		/*****************************************************************************
 		***** LISLIRETAILLE : Accesseur en lecture de la taille de CLISTE<MTYPE> *****

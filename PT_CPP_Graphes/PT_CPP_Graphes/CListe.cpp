@@ -75,6 +75,21 @@ template<class MTYPE> CListe<MTYPE>::CListe(unsigned int uiTaille)
 	}
 }
 
+/*******************************************************************
+***** ~CLISTE<MTYPE> : Destructeur de CLISTE<MTYPE> ****************
+********************************************************************
+***** Entrée :												   *****
+***** la liste                                                 *****
+***** Nécessite :                                              *****
+***** Sortie :                                                 *****
+***** Entraine : Le destucteur désalloue le tableau            *****
+*******************************************************************/
+template<class MTYPE> CListe<MTYPE>::~CListe()
+{
+	uiLISTaille = 0;
+	delete pLISListe;
+}
+
 /*****************************************************************************
 ***** LISLIRETAILLE : Accesseur en lecture de la taille de CLISTE<MTYPE> *****
 ******************************************************************************
