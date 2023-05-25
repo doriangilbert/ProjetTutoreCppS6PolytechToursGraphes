@@ -257,19 +257,25 @@ void CSommet::SOMSupprimerArcArrivants(unsigned int uiDestination)
 ***************************************************************************/
 void CSommet::SOMAfficher() {
 	cout << "uiSOMID = " << uiSOMId << "\n";
-	cout << "Liste des destinations arrivantes est \n";
 	if (LISSOMArrivants.LISLireTaille() != 0) {
+		cout << "Liste des destinations arrivantes est \n";
 		for (unsigned int uiBoucle = 0; uiBoucle < LISSOMArrivants.LISLireTaille(); uiBoucle++) {
 			cout << LISSOMArrivants.LISLireElement(uiBoucle)->ARCLireDestination() << " ";
 		}
 		cout << "\n";
 	}
-	cout << "Liste des destinations partantes est \n";
+	else {
+		cout << "Liste des destinations arrivantes est vide\n";
+	}
 	if (LISSOMPartants.LISLireTaille() != 0) {
+		cout << "Liste des destinations partantes est \n";
 		for (unsigned int uiBoucle = 0; uiBoucle < LISSOMPartants.LISLireTaille(); uiBoucle++) {
 			cout << LISSOMPartants.LISLireElement(uiBoucle)->ARCLireDestination() << " ";
 		}
 		cout << "\n";
+	}
+	else {
+		cout << "Liste des destinations partantes est vide \n";
 	}
 }
 

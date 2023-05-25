@@ -22,7 +22,6 @@ int main(int argc, char* argv[])
 			GRAGraphe.GRAAfficher();
 			GRAGraphe.GRAInverserGraphe();
 			GRAGraphe.GRAAfficher();
-
 		}
 	}
 	catch (CException EXCErreur) {

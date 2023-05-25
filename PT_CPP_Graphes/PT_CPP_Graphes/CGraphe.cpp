@@ -173,6 +173,7 @@ void CGraphe::GRAAfficher()
 	}
 	if (LISGRASommet.LISLireTaille() != 0) {
 		for (unsigned int uiBoucle = 0; uiBoucle < LISGRASommet.LISLireTaille(); uiBoucle++) {
+			
 			LISGRASommet.LISLireElement(uiBoucle).SOMAfficher();
 		}
 	}
