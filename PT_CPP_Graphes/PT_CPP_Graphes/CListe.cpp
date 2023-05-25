@@ -254,8 +254,8 @@ template<class MTYPE> CListe<MTYPE>& CListe<MTYPE>::operator=(CListe<MTYPE> LISP
 		{
 			pLISListe[uiBoucle] = LISParam.LISLireElement(uiBoucle);
 		}
-		return *this;
 	}
+	return *this;
 }
 
 #endif
