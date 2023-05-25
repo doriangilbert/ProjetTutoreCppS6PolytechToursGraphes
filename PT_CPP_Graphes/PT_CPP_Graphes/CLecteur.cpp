@@ -12,7 +12,7 @@
 *********************************************************/
 CLecteur::CLecteur()
 {
-	pcLECNomFichier = NULL;
+	pcLECNomFichier = nullptr;
 }
 
 /*********************************************************
@@ -58,7 +58,8 @@ CLecteur::CLecteur(char* pcNomFichier)
 **********************************************/
 CLecteur::~CLecteur()
 {
-	pcLECNomFichier = NULL;
+	pcLECNomFichier = nullptr;
+	delete[] pcLECNomFichier;
 }
 
 /*****************************************************************************

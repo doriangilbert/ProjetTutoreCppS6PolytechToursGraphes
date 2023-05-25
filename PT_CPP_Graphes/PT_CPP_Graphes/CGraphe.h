@@ -3,8 +3,6 @@
 
 #include "CSommet.h"
 
-#define NULL 0;
-
 class CGraphe
 {
 	private:

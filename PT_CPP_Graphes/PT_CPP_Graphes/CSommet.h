@@ -4,8 +4,6 @@
 #include "CListe.h"
 #include "CArc.h"
 
-#define NULL 0
-
 #define EstDejaDansLaListe 31
 #define NEstPasDansLaListe 32
 

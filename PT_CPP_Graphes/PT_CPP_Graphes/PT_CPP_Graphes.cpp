@@ -39,6 +39,7 @@ int main(int argc, char* argv[])
 			CGraphe GRAGrapheInv = GRAGraphe.GRAInverserGraphe();
 			cout << "AFFICHAGE DU GRAPHE INVERSE" << endl;
 			GRAGrapheInv.GRAAfficher();
+			delete LECLecteur;
 		}
 	}
 	catch (CException EXCErreur) 

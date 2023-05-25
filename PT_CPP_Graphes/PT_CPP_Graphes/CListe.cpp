@@ -256,7 +256,6 @@ template<class MTYPE> CListe<MTYPE>& CListe<MTYPE>::operator=(CListe<MTYPE> LISP
 		}
 		return *this;
 	}
-
 }
 
 #endif

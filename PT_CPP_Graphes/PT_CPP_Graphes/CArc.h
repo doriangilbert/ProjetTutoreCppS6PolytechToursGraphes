@@ -1,8 +1,6 @@
 #ifndef CArc_h
 #define CArc_h
 
-#define NULL 0;
-
 class CArc
 {
 	private:
